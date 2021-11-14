@@ -1,6 +1,6 @@
-# carbon
+# Carbon app - a frontend app for the DeSo blockchain 
 
-A frontend app for the DeSo blockchain
+This is app can be used as a template for building out social apps on top of the DeSo blockchain.
 
 ## Getting Started
 

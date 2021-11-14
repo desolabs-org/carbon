@@ -1,4 +1,5 @@
 import 'package:carbon/layouts/parts/branding_banner.dart';
+import 'package:carbon/layouts/parts/main_menu.dart';
 import 'package:carbon/themes/colors.dart';
 import 'package:carbon/themes/sizes.dart';
 import 'package:flutter/material.dart';
@@ -28,16 +29,18 @@ class _DefaultLayoutState extends State<DefaultLayout> {
       primary: true,
       body: Row(
         children: [
-          if (size.width > ThemeSizes.small) Expanded(
-              flex: 2,
+          if (size.width > ThemeSizes.tiny) Expanded(
+              flex: (size.width > ThemeSizes.small)? 2 : 1,
               child: Column(
                 children: [
                   if (size.height > ThemeSizes.tiny) SizedBox(
                       height: 64,
                       child: BrandingBanner()
                   ),
-                  Expanded(child: Container(color: Colors.red,)),
-                  if(size.height > ThemeSizes.tiny) SizedBox(
+                  Expanded(
+                      child: MainMenu()
+                  ),
+                  if (size.height > ThemeSizes.tiny) SizedBox(
                       height: size.height * 0.15,
                       child: Container(color: Colors.amber,
                       )

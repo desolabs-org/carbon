@@ -6,8 +6,6 @@ build_web:
     - flutter pub get
   script:
     - flutter build web --release
-    - flutter analyze
-    - flutter test
   artifacts:
     paths:
       - build/web

@@ -2,9 +2,10 @@ build_web:
   stage: build
   image: cirrusci/flutter:stable
   before_script:
+    - flutter clean
     - flutter pub get
   script:
-    - flutter build web
+    - flutter build web --release
     - flutter analyze
     - flutter test
   artifacts:

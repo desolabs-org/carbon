@@ -1,6 +1,7 @@
 import 'package:carbon/layouts/parts/branding_banner.dart';
 import 'package:carbon/layouts/parts/main_menu.dart';
 import 'package:carbon/layouts/parts/profile.dart';
+import 'package:carbon/layouts/parts/search_bar.dart';
 import 'package:carbon/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -26,8 +27,7 @@ class _DefaultLayoutState extends State<DefaultLayout> {
               flex: (size.width > ThemeSizes.small)? 2 : 1,
               child: Column(
                 children: [
-                  if (size.height > ThemeSizes.tiny)
-                    SizedBox(height: 64, child: BrandingBanner()),
+                  SizedBox(height: 64, child: BrandingBanner()),
                   Expanded(child: MainMenu()),
                   if (size.height > ThemeSizes.tiny) SizedBox(
                       height: 92,
@@ -40,7 +40,7 @@ class _DefaultLayoutState extends State<DefaultLayout> {
               flex: (size.width > ThemeSizes.large)? 8 : 6,
               child: Column(
                 children: [
-                  if (size.height > ThemeSizes.tiny) SizedBox(height: 64, child: Container(color: Colors.indigo,)),
+                  SizedBox(height: 64, child: SearchBar()),
                   Expanded(child: Container(color: Colors.blue,)),
                   if(size.height > ThemeSizes.tiny) SizedBox(height: 128, child: Container(color: Colors.cyan,)),
                 ],
@@ -50,7 +50,7 @@ class _DefaultLayoutState extends State<DefaultLayout> {
               flex: (size.width > ThemeSizes.small)? 3 : (size.width > ThemeSizes.tiny)? 4 : 0,
               child: Column(
                 children: [
-                  if (size.height > ThemeSizes.tiny) SizedBox(height: 64, child: Container(color: Colors.deepPurpleAccent,)),
+                  SizedBox(height: 64, child: Container(color: Colors.deepPurpleAccent,)),
                   Expanded(child: Container(color: Colors.green,)),
                   if(size.height > ThemeSizes.tiny) SizedBox(height: 64, child: Container(color: Colors.teal,)),
                 ],

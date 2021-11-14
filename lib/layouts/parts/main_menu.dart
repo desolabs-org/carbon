@@ -26,7 +26,7 @@ class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    TextStyle buttonStyle = Theme.of(context).textTheme.headline6.copyWith(fontWeight: FontWeight.bold);
+    TextStyle textStyle = Theme.of(context).textTheme.headline6.copyWith(fontWeight: FontWeight.bold);
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.only(top: size.height * 0.02),
@@ -34,14 +34,14 @@ class MainMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: (size.width < ThemeSizes.tiny)? CrossAxisAlignment.center : CrossAxisAlignment.start,
           children: [
-            menuButton(Icons.home_work_rounded, "Home", buttonStyle, size),
-            menuButton(Icons.star, "Trends", buttonStyle, size),
-            menuButton(Icons.notifications_active_rounded, "News", buttonStyle, size),
-            menuButton(Icons.message_rounded, "Chats", buttonStyle, size),
-            menuButton(Icons.bookmark_rounded, "Links", buttonStyle, size),
-            menuButton(Icons.margin, "Lists", buttonStyle, size),
-            menuButton(Icons.person, "Profile", buttonStyle, size),
-            menuButton(Icons.more_horiz, "More", buttonStyle, size),
+            menuButton(Icons.home_work_rounded, "Home", textStyle, size),
+            menuButton(Icons.star, "Trends", textStyle, size),
+            menuButton(Icons.notifications_active_rounded, "News", textStyle, size),
+            menuButton(Icons.message_rounded, "Chats", textStyle, size),
+            menuButton(Icons.bookmark_rounded, "Links", textStyle, size),
+            menuButton(Icons.margin, "Lists", textStyle, size),
+            menuButton(Icons.person, "Profile", textStyle, size),
+            menuButton(Icons.more_horiz, "More", textStyle, size),
           ],
         )
       )

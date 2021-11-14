@@ -47,7 +47,7 @@ class _DefaultLayoutState extends State<DefaultLayout> {
               )
           ),
           Expanded(
-              flex: (size.width > ThemeSizes.small)? 3 : (size.width > ThemeSizes.tiny)? 4 : 0,
+              flex: (size.width > ThemeSizes.large)? 2 : (size.width > ThemeSizes.small)? 3 : 0,
               child: Column(
                 children: [
                   SizedBox(height: 64, child: Container(color: Colors.deepPurpleAccent,)),

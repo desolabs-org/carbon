@@ -53,7 +53,8 @@ flutter:
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
   assets:
-    - assets/
+    - assets/deso_ninja.png
+    - assets/deso_ninja_full_nobg.png
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages

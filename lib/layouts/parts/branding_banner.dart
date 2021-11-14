@@ -7,6 +7,7 @@ class BrandingBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      // padding: EdgeInsets.symmetric(vertical: size.height * 0.002),
       alignment: Alignment.center,
         child: Image.asset(
           (size.width < ThemeSizes.small)?

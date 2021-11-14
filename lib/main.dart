@@ -1,7 +1,7 @@
-import 'package:carbon/theme/colors.dart';
+import 'package:carbon/themes/colors.dart';
 import 'package:flutter/material.dart';
 
-import 'layout/default.dart';
+import 'layouts/default.dart';
 
 void main() {
   runApp(CarbonApp());

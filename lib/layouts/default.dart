@@ -1,6 +1,5 @@
 import 'package:carbon/layouts/parts/branding_banner.dart';
 import 'package:carbon/layouts/parts/main_menu.dart';
-import 'package:carbon/themes/colors.dart';
 import 'package:carbon/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +13,6 @@ class DefaultLayout extends StatefulWidget {
 }
 
 class _DefaultLayoutState extends State<DefaultLayout> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,12 +61,7 @@ class _DefaultLayoutState extends State<DefaultLayout> {
               )
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+      )
     );
   }
 }

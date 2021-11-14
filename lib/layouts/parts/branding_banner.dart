@@ -11,7 +11,7 @@ class BrandingBanner extends StatelessWidget {
       alignment: Alignment.center,
         child: Image.asset(
           (size.width < ThemeSizes.small)?
-              "deso_ninja.png" : "deso_ninja_full_nobg.png",
+              "images/deso_ninja.png" : "images/deso_ninja_full_nobg.png",
             fit: BoxFit.contain,
         ),
     );

@@ -14,6 +14,7 @@ pages:
   stage: deploy
   script:
     - cp -r build/web public
+    - cp -r assets/images public
   artifacts:
     paths:
       - public

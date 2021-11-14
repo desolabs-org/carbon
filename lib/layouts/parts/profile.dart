@@ -8,7 +8,7 @@ class Profile extends StatelessWidget {
       padding: EdgeInsets.all(size.height * 0.01),
       child: Center(
         child: TextButton(
-          child: Image.asset("kanshi.png", fit: BoxFit.contain,),
+          child: Image.asset("images/kanshi.png", fit: BoxFit.contain,),
           onPressed: () {},
         ),
       ),

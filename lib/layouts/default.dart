@@ -23,43 +23,45 @@ class _DefaultLayoutState extends State<DefaultLayout> {
 
   @override
   Widget build(BuildContext context) {
-    double pageWidth = MediaQuery.of(context).size.width;
-    double pageHeight = MediaQuery.of(context).size.height;
-    double shortestSide = MediaQuery.of(context).size.shortestSide;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       primary: true,
-      backgroundColor: ThemeColors.primarySwatch[50],
       body: Row(
         children: [
-          Expanded(
-              flex: (pageWidth > ThemeSizes.small)? 2 : 0,
+          if (size.width > ThemeSizes.small) Expanded(
+              flex: 2,
               child: Column(
                 children: [
-                  SizedBox(height: (pageHeight > ThemeSizes.tiny)? 128 : 64,
+                  if (size.height > ThemeSizes.tiny) SizedBox(
+                      height: 64,
                       child: BrandingBanner()
                   ),
                   Expanded(child: Container(color: Colors.red,)),
-                  if(pageHeight > ThemeSizes.tiny) SizedBox(height: pageHeight * 0.15, child: Container(color: Colors.amber,)),
+                  if(size.height > ThemeSizes.tiny) SizedBox(
+                      height: size.height * 0.15,
+                      child: Container(color: Colors.amber,
+                      )
+                  ),
                 ],
               )
           ),
           Expanded(
-              flex: (pageWidth > ThemeSizes.large)? 8 : 6,
+              flex: (size.width > ThemeSizes.large)? 8 : 6,
               child: Column(
                 children: [
-                  SizedBox(height: (pageHeight > ThemeSizes.tiny)? 128 : 64, child: Container(color: Colors.indigo,)),
+                  if (size.height > ThemeSizes.tiny) SizedBox(height: 64, child: Container(color: Colors.indigo,)),
                   Expanded(child: Container(color: Colors.blue,)),
-                  if(pageHeight > ThemeSizes.tiny) SizedBox(height: pageHeight * 0.15, child: Container(color: Colors.cyan,)),
+                  if(size.height > ThemeSizes.tiny) SizedBox(height: size.height * 0.15, child: Container(color: Colors.cyan,)),
                 ],
               )
           ),
           Expanded(
-              flex: (pageWidth > ThemeSizes.small)? 3 : (pageWidth > ThemeSizes.tiny)? 4 : 0,
+              flex: (size.width > ThemeSizes.small)? 3 : (size.width > ThemeSizes.tiny)? 4 : 0,
               child: Column(
                 children: [
-                  SizedBox(height: (pageHeight > ThemeSizes.tiny)? 128 : 64, child: Container(color: Colors.deepPurpleAccent,)),
+                  if (size.height > ThemeSizes.tiny) SizedBox(height: 64, child: Container(color: Colors.deepPurpleAccent,)),
                   Expanded(child: Container(color: Colors.green,)),
-                  if(pageHeight > ThemeSizes.tiny) SizedBox(height: pageHeight * 0.15, child: Container(color: Colors.teal,)),
+                  if(size.height > ThemeSizes.tiny) SizedBox(height: size.height * 0.15, child: Container(color: Colors.teal,)),
                 ],
               )
           ),

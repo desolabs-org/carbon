@@ -1,3 +1,4 @@
+import 'package:carbon/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'layout/default.dart';
@@ -12,7 +13,7 @@ class CarbonApp extends StatelessWidget {
     return MaterialApp(
       title: 'Carbon app by Love4src',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: ThemeColors.primarySwatch
       ),
       home: DefaultLayout(title: 'Welcome to Carbon app'),
     );

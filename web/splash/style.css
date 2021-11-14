@@ -1,8 +1,7 @@
 body, html {
   margin:0;
-  height:100%;
-  background: #fafafa;
-  background-image: url("img/light-background.png");
+  height:100%; background: rgb(251,251,251);
+              background: linear-gradient(319deg, rgba(251,251,251,1) 0%, rgba(237,255,236,1) 22%, rgba(250,255,252,1) 100%, rgba(22,20,20,0.31246495180103295) 100%);
   background-size: 100% 100%;
 }
 
@@ -36,8 +35,8 @@ body, html {
   body {
     margin:0;
     height:100%;
-    background: #fafafa;
-    background-image: url("img/dark-background.png");
+    background: rgb(0,0,0);
+    background: linear-gradient(128deg, rgba(0,0,0,1) 0%, rgba(8,26,37,1) 22%, rgba(0,27,54,1) 100%, rgba(22,20,20,0.31246495180103295) 100%);
     background-size: 100% 100%;
   }
 }

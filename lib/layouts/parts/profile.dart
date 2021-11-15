@@ -4,14 +4,14 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      padding: EdgeInsets.all(size.width * 0.01),
+    return TextButton(
       child: Center(
-        child: TextButton(
+        child: Container(
+          padding: EdgeInsets.all(4),
           child: Image.asset("images/kanshi.png", fit: BoxFit.contain,),
-          onPressed: () {},
         ),
       ),
+      onPressed: () {},
     );
   }
 }

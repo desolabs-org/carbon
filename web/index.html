@@ -38,6 +38,10 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('flutter-first-frame', function () {
         navigator.serviceWorker.register('flutter_service_worker.js');
+        var splashElement = document.getElementById('splash');
+        if (splashElement != null) {
+          splashElement.remove();
+        }
       });
     }
   </script>

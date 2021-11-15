@@ -12,7 +12,7 @@ class MainMenu extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                      padding: EdgeInsets.only(top: size.height * 0.015, bottom: size.height * 0.015),
+                      padding: EdgeInsets.symmetric(vertical: size.height * 0.015),
                       child: Icon(iconData, size: style.fontSize * 1.5, color: style.color,)
                   ),
                 if (size.width > ThemeSizes.small) Container(
@@ -33,13 +33,14 @@ class MainMenu extends StatelessWidget {
     TextStyle textStyle = Theme.of(context).textTheme.headline6.copyWith(
         fontWeight: FontWeight.bold);
     return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       child: Container(
         padding: EdgeInsets.only(top: size.height * 0.02),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: (size.width < ThemeSizes.tiny)? CrossAxisAlignment.center : CrossAxisAlignment.start,
           children: [
-            menuButton(Icons.star_outline_rounded, "Trends", textStyle, size),
+            menuButton(Icons.star_outline, "Trends", textStyle, size),
             menuButton(Icons.notifications_active_outlined, "News", textStyle, size),
             menuButton(Icons.calendar_today_outlined, "Events", textStyle, size),
             menuButton(Icons.bookmark_outline_rounded, "Saved", textStyle, size),

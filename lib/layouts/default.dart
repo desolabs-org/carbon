@@ -1,7 +1,9 @@
 import 'package:carbon/layouts/parts/branding_banner.dart';
+import 'package:carbon/layouts/parts/influencers.dart';
 import 'package:carbon/layouts/parts/main_menu.dart';
 import 'package:carbon/layouts/parts/profile.dart';
 import 'package:carbon/layouts/parts/search_bar.dart';
+import 'package:carbon/layouts/parts/user_status.dart';
 import 'package:carbon/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -47,11 +49,11 @@ class _DefaultLayoutState extends State<DefaultLayout> {
               )
           ),
           Expanded(
-              flex: (size.width > ThemeSizes.large)? 2 : (size.width > ThemeSizes.small)? 3 : 0,
+              flex: (size.width > ThemeSizes.large)? 2 : (size.width > ThemeSizes.small)? 3 : 1,
               child: Column(
                 children: [
-                  SizedBox(height: 64, child: Container(color: Colors.deepPurpleAccent,)),
-                  Expanded(child: Container(color: Colors.green,)),
+                  SizedBox(height: 64, child: UserStatus()),
+                  Expanded(child: Influencers()),
                   if(size.height > ThemeSizes.tiny) SizedBox(height: 64, child: Container(color: Colors.teal,)),
                 ],
               )

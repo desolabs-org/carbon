@@ -1,6 +1,7 @@
 import 'package:carbon/layouts/parts/branding_banner.dart';
 import 'package:carbon/layouts/parts/influencers.dart';
 import 'package:carbon/layouts/parts/main_menu.dart';
+import 'package:carbon/layouts/parts/posts_feed.dart';
 import 'package:carbon/layouts/parts/profile.dart';
 import 'package:carbon/layouts/parts/search_bar.dart';
 import 'package:carbon/layouts/parts/user_status.dart';
@@ -31,8 +32,8 @@ class _DefaultLayoutState extends State<DefaultLayout> {
                 children: [
                   SizedBox(height: 64, child: BrandingBanner()),
                   Expanded(child: MainMenu()),
-                  if (size.height > ThemeSizes.tiny) SizedBox(
-                      height: 92,
+                  SizedBox(
+                      height: 64,
                       child: Profile(),
                   ),
                 ],
@@ -43,8 +44,8 @@ class _DefaultLayoutState extends State<DefaultLayout> {
               child: Column(
                 children: [
                   SizedBox(height: 64, child: SearchBar()),
-                  Expanded(child: Container(color: Colors.blue,)),
-                  if(size.height > ThemeSizes.tiny) SizedBox(height: 128, child: Container(color: Colors.cyan,)),
+                  Expanded(child: PostsFeed()),
+                  // if(size.height > ThemeSizes.tiny) SizedBox(height: 128, child: Container(color: Colors.cyan,)),
                 ],
               )
           ),
@@ -54,7 +55,9 @@ class _DefaultLayoutState extends State<DefaultLayout> {
                 children: [
                   SizedBox(height: 64, child: UserStatus()),
                   Expanded(child: Influencers()),
-                  if(size.height > ThemeSizes.tiny) SizedBox(height: 64, child: Container(color: Colors.teal,)),
+                  // if(size.height > ThemeSizes.tiny) SizedBox(height: 128,
+                  //     child: Container(color: Colors.teal,)
+                  // ),
                 ],
               )
           ),

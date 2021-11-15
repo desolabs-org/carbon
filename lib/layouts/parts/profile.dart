@@ -5,7 +5,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.all(size.height * 0.01),
+      padding: EdgeInsets.all(size.width * 0.01),
       child: Center(
         child: TextButton(
           child: Image.asset("images/kanshi.png", fit: BoxFit.contain,),

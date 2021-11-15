@@ -30,10 +30,6 @@ class Influencers extends StatelessWidget {
     }
   }
 
-  String formatValue(double value) {
-    return NumberFormat.compact().format(value);
-  }
-
   Widget showRow(String text, TextStyle textStyle, Size size, double value, InfluenceKind kind) {
     return Card(
       elevation: 1,
@@ -41,18 +37,19 @@ class Influencers extends StatelessWidget {
           child: SizedBox(
               width: size.width * 0.22,
               child: TextButton(
-                child: Expanded(child: Row(
-                  mainAxisAlignment: (size.width > ThemeSizes.small)? MainAxisAlignment.start : MainAxisAlignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     if (size.width > ThemeSizes.small) Container(
                         padding: EdgeInsets.only(left: size.width * 0.02),
                         child: Icon(getIcon(kind), size: textStyle.fontSize * 1.7, color: textStyle.color),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: size.height * 0.005, horizontal: size.width * 0.01),
+                      padding: EdgeInsets.symmetric(vertical: size.height * 0.005, horizontal: size.width * 0.02),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(formatValue(value), style: textStyle.copyWith(fontSize: textStyle.fontSize * 0.7),),
+                          Text(NumberFormat.compact().format(value), style: textStyle.copyWith(fontSize: textStyle.fontSize * 0.7),),
                           if (size.width < ThemeSizes.small) Icon(getIcon(kind), size: textStyle.fontSize * 1.7, color: textStyle.color),
                           Text("TOP 5", style: textStyle.copyWith(fontSize: textStyle.fontSize * 0.7),),
                         ],
@@ -67,7 +64,7 @@ class Influencers extends StatelessWidget {
                     ),
                     Spacer(),
                   ],
-                ),),
+                ),
                 onPressed: () {},
               )
           )

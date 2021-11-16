@@ -14,7 +14,7 @@ class Profile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                      padding: EdgeInsets.only(top: size.height * 0.015, bottom: size.height * 0.015),
+                      padding: EdgeInsets.only(top: 4, bottom: 4),
                       child: Image.asset("images/kanshi.png", height: textStyle.fontSize * 2,)
                   ),
                   if (size.width > ThemeSizes.small) Container(

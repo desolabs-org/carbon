@@ -30,7 +30,7 @@ class Influencers extends StatelessWidget {
     }
   }
 
-  Widget showRow(String text, TextStyle textStyle, Size size, double value, InfluenceKind kind) {
+  Widget showRow(String text, TextStyle? textStyle, Size size, double value, InfluenceKind kind) {
     return Card(
       elevation: 1,
       child: Container(
@@ -42,24 +42,24 @@ class Influencers extends StatelessWidget {
                   children: [
                     if (size.width > ThemeSizes.small) Container(
                         padding: EdgeInsets.only(left: size.width * 0.02),
-                        child: Icon(getIcon(kind), size: textStyle.fontSize * 1.7, color: textStyle.color),
+                        child: Icon(getIcon(kind), size: textStyle?.fontSize??12 * 1.7, color: textStyle?.color??Colors.indigoAccent),
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(vertical: size.height * 0.005, horizontal: size.width * 0.02),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(NumberFormat.compact().format(value), style: textStyle.copyWith(fontSize: textStyle.fontSize * 0.7),),
-                          if (size.width < ThemeSizes.small) Icon(getIcon(kind), size: textStyle.fontSize * 1.7, color: textStyle.color),
-                          Text("TOP 5", style: textStyle.copyWith(fontSize: textStyle.fontSize * 0.7),),
+                          Text(NumberFormat.compact().format(value), style: textStyle?.copyWith(fontSize: textStyle?.fontSize??12 * 0.7),),
+                          if (size.width < ThemeSizes.small) Icon(getIcon(kind), size: textStyle?.fontSize??12 * 1.7, color: textStyle?.color??Colors.indigoAccent),
+                          Text("TOP 5", style: textStyle?.copyWith(fontSize: textStyle?.fontSize??12 * 0.7),),
                         ],
                       ),
                     ),
                     if (size.width > ThemeSizes.small) Container(
-                        padding: EdgeInsets.only(top: size.height * 0.015, bottom: size.height * 0.015, left: textStyle.fontSize * 0.7),
+                        padding: EdgeInsets.only(top: size.height * 0.015, bottom: size.height * 0.015, left: textStyle?.fontSize??12 * 0.7),
                         child: Text(
                           (text.length > 15)? text.substring(0, 15) + "..." : text,
-                          style: textStyle.copyWith(fontWeight: FontWeight.normal)
+                          style: textStyle?.copyWith(fontWeight: FontWeight.normal)
                         )
                     ),
                     Spacer(),
@@ -75,8 +75,8 @@ class Influencers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    TextStyle textStyle = Theme.of(context).textTheme.subtitle1;
-    return SingleChildScrollView(
+    TextStyle? textStyle = Theme.of(context).textTheme.subtitle1;
+    return Expanded(child: SingleChildScrollView(
       physics: BouncingScrollPhysics(),
       child: Container(
         child: Column(
@@ -112,6 +112,6 @@ class Influencers extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

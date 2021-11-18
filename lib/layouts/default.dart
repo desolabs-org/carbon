@@ -1,66 +1,26 @@
-import 'package:carbon/layouts/parts/branding_banner.dart';
+import 'package:carbon/layouts/parts/brand_logo.dart';
 import 'package:carbon/layouts/parts/influencers.dart';
 import 'package:carbon/layouts/parts/main_menu.dart';
 import 'package:carbon/layouts/parts/posts_feed.dart';
 import 'package:carbon/layouts/parts/profile.dart';
 import 'package:carbon/layouts/parts/search_bar.dart';
 import 'package:carbon/layouts/parts/user_status.dart';
-import 'package:carbon/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
-class DefaultLayout extends StatefulWidget {
-  DefaultLayout({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _DefaultLayoutState createState() => _DefaultLayoutState();
-}
-
-class _DefaultLayoutState extends State<DefaultLayout> {
+class DefaultLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       primary: true,
       body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Expanded(
-              flex: (size.width > ThemeSizes.small)? 2 : 1,
-              child: Column(
-                children: [
-                  SizedBox(height: 64, child: BrandingBanner()),
-                  Expanded(child: MainMenu()),
-                  SizedBox(
-                      height: 64,
-                      child: Profile(),
-                  ),
-                ],
-              )
-          ),
-          Expanded(
-              flex: (size.width > ThemeSizes.large)? 8 : 6,
-              child: Column(
-                children: [
-                  SizedBox(height: 64, child: SearchBar()),
-                  Expanded(child: PostsFeed()),
-                  // if(size.height > ThemeSizes.tiny) SizedBox(height: 128, child: Container(color: Colors.cyan,)),
-                ],
-              )
-          ),
-          Expanded(
-              flex: (size.width > ThemeSizes.large)? 2 : (size.width > ThemeSizes.small)? 3 : 1,
-              child: Column(
-                children: [
-                  SizedBox(height: 64, child: UserStatus()),
-                  Expanded(child: Influencers()),
-                  // if(size.height > ThemeSizes.tiny) SizedBox(height: 128,
-                  //     child: Container(color: Colors.teal,)
-                  // ),
-                ],
-              )
-          ),
+          Column(children: [ BrandLogo(), MainMenu(), Profile(), ], ),
+          Column(children: [ SearchBar(), PostsFeed(), ], ),
+          Column(children: [ UserStatus(), Influencers(), ], ),
         ],
       )
     );

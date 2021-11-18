@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:math';
 import 'package:carbon/themes/sizes.dart';
 import 'package:flutter/material.dart';
@@ -7,29 +8,30 @@ class PostsFeed extends StatelessWidget {
   Widget postBuilder (BuildContext context, int index) {
     return Container(
           padding: EdgeInsets.all(4),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 32,
-                width: 400,
-                child: Row(
-                  children: [
-                    Image.asset("images/kanshi.png", fit: BoxFit.fitHeight,),
-                    Text("kanshi")
-                  ],
-                )
-              ),
-              SizedBox(
-                  height: 92,
-                  width: 400,
-                  child: Row(
-                    children: [
-                      Text("Content")
-                    ],
-                  )
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+              height: 32,
+              width: 400,
+              child: Row(
+                children: [
+                  Image.asset("images/kanshi.png", fit: BoxFit.fitHeight,),
+                  Text("kanshi")
+                ],
               )
-            ],
           ),
+          SizedBox(
+              height: 92,
+              width: 400,
+              child: Row(
+                children: [
+                  Text("Content")
+                ],
+              )
+          )
+        ],
+      ),
         );
   }
 
@@ -37,19 +39,22 @@ class PostsFeed extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    int crossAxisCount = (size.width < ThemeSizes.small)? 1 : (size.width < ThemeSizes.large)? 2 : 3;
-
-    return CustomScrollView(
-        primary: false,
+    return Container(
+      width: size.width * 0.4,
+        height: size.height * 0.6,
+        child: CustomScrollView(
+        primary: true,
         reverse: true,
         slivers: <Widget>[
           SliverStaggeredGrid.countBuilder(
-            crossAxisCount: crossAxisCount,
+            crossAxisCount: 2,
             staggeredTileBuilder: (int index) => StaggeredTile.fit(1),
             itemBuilder: postBuilder,
-            itemCount: 100
+            itemCount: 100,
+            mainAxisSpacing: 4.0,
+            crossAxisSpacing: 4.0
           )
         ],
-    );
+    ));
   }
 }

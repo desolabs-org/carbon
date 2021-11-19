@@ -85,39 +85,69 @@ class InfluencerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.all((Theme.of(context).textTheme.headline6?.fontSize??12) * 0.05,),
-        child: TextButton(
-          child: Container(
-            padding: EdgeInsets.all(0.6 * (Theme.of(context).textTheme.headline6?.fontSize??12),),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  child: Icon(getIcon(kind), size: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12)),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: (Theme.of(context).textTheme.headline6?.fontSize??12)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(NumberFormat.compact().format(value), style: Theme.of(context).textTheme.caption),
-                      Text("TOP 5", style: Theme.of(context).textTheme.caption),
-                    ],
+    return Card(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: (Theme.of(context).textTheme.headline6?.fontSize??12) * 0.25,),
+
+          child: TextButton(
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: (Theme.of(context).textTheme.headline6?.fontSize??12) * 0.25,),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 5 * (Theme.of(context).textTheme.headline6?.fontSize??12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(NumberFormat.compact().format(value), style: Theme.of(context).textTheme.caption),
+                        Container(
+                          child: Icon(getIcon(kind), size: 1 * (Theme.of(context).textTheme.headline6?.fontSize??12)),
+                        ),
+                        Text("TOP 5", style: Theme.of(context).textTheme.caption),
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                    child: Text(
-                        (text.length > 20)? text.substring(0, 20) + "..." : text,
-                        style: Theme.of(context).textTheme.headline6
-                    )
-                ),
-              ],
+                  Container(
+                      padding: EdgeInsets.only(right: 2 * (Theme.of(context).textTheme.headline6?.fontSize??12)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(bottom: 0.25 * (Theme.of(context).textTheme.button?.fontSize??10)),
+                            child: Text(
+                              (text.length > 20)? text.substring(0, 20) + "..." : text,
+                              style: Theme.of(context).textTheme.button
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(Icons.check_circle_outline_outlined,
+                                  size: (Theme.of(context).textTheme.headline6?.fontSize??12)
+                              ),
+                              Icon(Icons.palette_outlined,
+                                  size: (Theme.of(context).textTheme.headline6?.fontSize??12)
+                              ),
+                              Icon(Icons.monetization_on_outlined,
+                                  size: (Theme.of(context).textTheme.headline6?.fontSize??12)
+                              ),
+                              Icon(Icons.star_outline,
+                                  size: (Theme.of(context).textTheme.headline6?.fontSize??12)
+                              ),
+                            ],
+                          )
+                        ]
+                      )
+                  ),
+                ],
+              ),
             ),
-          ),
           onPressed: () {},
         )
+      ),
     );
   }
 }

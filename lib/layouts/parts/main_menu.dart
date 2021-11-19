@@ -9,6 +9,7 @@ class MainMenu extends StatelessWidget {
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Container(
+            padding: EdgeInsets.symmetric(horizontal: (Theme.of(context).textTheme.headline6?.fontSize??12) * 0.5,),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -40,7 +41,7 @@ class MainMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all((Theme.of(context).textTheme.headline6?.fontSize??12) * 0.05,),
+        padding: EdgeInsets.symmetric(vertical: (Theme.of(context).textTheme.headline6?.fontSize??12) * 0.05,),
         child: TextButton(
           child: Container(
             padding: EdgeInsets.all((Theme.of(context).textTheme.headline6?.fontSize??12) * 0.6,),
@@ -54,7 +55,8 @@ class MainMenuButton extends StatelessWidget {
                 ),
                 Container(
                     padding: EdgeInsets.only(
-                      left: Theme.of(context).textTheme.headline6?.fontSize??12,),
+                      left: 0.75 * (Theme.of(context).textTheme.headline6?.fontSize??12),
+                    ),
                     child: Text(title, style: Theme.of(context).textTheme.headline6)
                 ),
               ],

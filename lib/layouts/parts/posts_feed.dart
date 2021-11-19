@@ -1,32 +1,8 @@
-import 'dart:html';
 import 'dart:math';
-import 'package:carbon/themes/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class PostsFeed extends StatelessWidget {
-  Widget postBuilder (BuildContext context, int index) {
-    return Container(
-          padding: EdgeInsets.all(4),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              Image.asset("images/kanshi.png", height: 24,),
-              Text("post no - " + index.toString(), style: Theme.of(context).textTheme.subtitle1,)
-            ],
-          ),
-          Row(
-            children: [
-              Text("Content")
-            ],
-          )
-        ],
-      ),
-        );
-  }
-
   ScrollController _scrollController = new ScrollController();
 
   @override
@@ -42,13 +18,43 @@ class PostsFeed extends StatelessWidget {
               key: UniqueKey(),
               crossAxisCount: maxColumns * 2,
               staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
-              itemBuilder: postBuilder,
+              itemBuilder: (BuildContext context, int index) => SocialPost(),
               itemCount: 100,
               mainAxisSpacing: 4.0,
               crossAxisSpacing: 4.0
             )
           ],
       )
+    );
+  }
+}
+
+class SocialPost extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(4),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              Image.asset("images/kanshi.png", height: 24,),
+              Text("some post title", style: Theme.of(context).textTheme.subtitle1,)
+            ],
+          ),
+          Row(
+            children: [
+              Text("Content")
+            ],
+          ),
+          Row(
+            children: [
+              Text("Content")
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

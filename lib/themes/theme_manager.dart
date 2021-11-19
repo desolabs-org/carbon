@@ -27,8 +27,10 @@ class ThemeManager extends ChangeNotifier {
 
   static final keyThemePreference = "theme-manager.theme-preference";
 
-  ThemeManager(int startingThemeKind) {
-    _themeKind = ThemeKind.values[startingThemeKind];
+  final SharedPreferences sharedPreferences;
+
+  ThemeManager(this.sharedPreferences) {
+    _themeKind = ThemeKind.values[sharedPreferences.getInt(keyThemePreference)??0];
     _themeData = appThemeData[_themeKind] ?? DarkTheme.data;
   }
 

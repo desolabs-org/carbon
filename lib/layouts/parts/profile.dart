@@ -12,10 +12,8 @@ class Profile extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Center(
-                    child: Container(
-                        child: Image.asset("images/kanshi.png", height: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12))
-                    )
+                Container(
+                    child: Image.asset("images/kanshi.png", height: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12))
                 ),
                 Container(
                     padding: EdgeInsets.only(

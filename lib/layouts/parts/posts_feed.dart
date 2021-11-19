@@ -32,29 +32,35 @@ class PostsFeed extends StatelessWidget {
 class SocialPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(4),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              Image.asset("images/kanshi.png", height: 24,),
-              Text("some post title", style: Theme.of(context).textTheme.subtitle1,)
-            ],
-          ),
-          Row(
-            children: [
-              Text("Content")
-            ],
-          ),
-          Row(
-            children: [
-              Text("Content")
-            ],
-          ),
-        ],
-      ),
+    return Card(
+      child: Container(
+        padding: EdgeInsets.all(4),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Image.asset("images/kanshi.png", height: 24,),
+                Text("some post title", style: Theme.of(context).textTheme.subtitle1,)
+              ],
+            ),
+            Row(
+              children: [
+                Text("Content")
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Icon(Icons.repeat, size: 24,),
+                Icon(Icons.bookmark_outline_rounded, size: 24,),
+                Icon(Icons.star_outline, size: 24,),
+              ],
+            ),
+          ],
+        ),
+      )
     );
   }
 }

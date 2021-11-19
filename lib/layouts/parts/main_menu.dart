@@ -48,10 +48,8 @@ class MainMenuButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Center(
-                  child: Container(
-                    child: Icon(iconData, size: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12))
-                  )
+                Container(
+                  child: Icon(iconData, size: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12))
                 ),
                 Container(
                     padding: EdgeInsets.only(

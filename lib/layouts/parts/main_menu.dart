@@ -9,7 +9,6 @@ class MainMenu extends StatelessWidget {
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Container(
-            padding: EdgeInsets.only(top: 4),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -41,28 +40,28 @@ class MainMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(2),
-      child: TextButton(
-        child: Container(
-          padding: EdgeInsets.all((Theme.of(context).textTheme.headline6?.fontSize??12) * 0.75,),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  child: Icon(iconData, size: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12))
-                )
-              ),
-              Container(
-                  padding: EdgeInsets.only(
-                    left: Theme.of(context).textTheme.headline6?.fontSize??12,),
-                  child: Text(title, style: Theme.of(context).textTheme.headline6)
-              ),
-            ],
+        padding: EdgeInsets.all((Theme.of(context).textTheme.headline6?.fontSize??12) * 0.05,),
+        child: TextButton(
+          child: Container(
+            padding: EdgeInsets.all((Theme.of(context).textTheme.headline6?.fontSize??12) * 0.6,),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Center(
+                  child: Container(
+                    child: Icon(iconData, size: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12))
+                  )
+                ),
+                Container(
+                    padding: EdgeInsets.only(
+                      left: Theme.of(context).textTheme.headline6?.fontSize??12,),
+                    child: Text(title, style: Theme.of(context).textTheme.headline6)
+                ),
+              ],
+            ),
           ),
-        ),
-        onPressed: () {},
-      )
+          onPressed: () {},
+        )
     );
   }
 

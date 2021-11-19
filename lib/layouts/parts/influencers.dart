@@ -1,5 +1,3 @@
-import 'package:carbon/themes/colors.dart';
-import 'package:carbon/themes/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -8,6 +6,61 @@ enum InfluenceKind {
 }
 
 class Influencers extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        primary: false,
+        child: Container(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InfluencerButton("kanshi", 100, InfluenceKind.Diamonds),
+              InfluencerButton("DeSoNinja", 20123.1, InfluenceKind.CCBuys),
+              InfluencerButton("love4src", 912, InfluenceKind.NFTSales),
+              InfluencerButton("astronation", 12, InfluenceKind.Posts),
+              InfluencerButton("yexperiment", 10122, InfluenceKind.NFTBuys),
+              InfluencerButton("kanshi", 100, InfluenceKind.CCSales),
+              InfluencerButton("DeSoNinja", 20123.1, InfluenceKind.Likes),
+              InfluencerButton("kanshi", 100, InfluenceKind.Diamonds),
+              InfluencerButton("DeSoNinja", 20123.1, InfluenceKind.CCBuys),
+              InfluencerButton("love4src", 912, InfluenceKind.NFTSales),
+              InfluencerButton("astronation", 12, InfluenceKind.Posts),
+              InfluencerButton("yexperiment", 10122, InfluenceKind.NFTBuys),
+              InfluencerButton("kanshi", 100, InfluenceKind.CCSales),
+              InfluencerButton("DeSoNinja", 20123.1, InfluenceKind.Likes),
+              InfluencerButton("kanshi", 100, InfluenceKind.Diamonds),
+              InfluencerButton("DeSoNinja", 20123.1, InfluenceKind.CCBuys),
+              InfluencerButton("love4src", 912, InfluenceKind.NFTSales),
+              InfluencerButton("astronation", 12, InfluenceKind.Posts),
+              InfluencerButton("yexperiment", 10122, InfluenceKind.NFTBuys),
+              InfluencerButton("kanshi", 100, InfluenceKind.CCSales),
+              InfluencerButton("DeSoNinja", 20123.1, InfluenceKind.Likes),
+              InfluencerButton("kanshi", 100, InfluenceKind.Diamonds),
+              InfluencerButton("DeSoNinja", 20123.1, InfluenceKind.CCBuys),
+              InfluencerButton("love4src", 912, InfluenceKind.NFTSales),
+              InfluencerButton("astronation", 12, InfluenceKind.Posts),
+              InfluencerButton("yexperiment", 10122, InfluenceKind.NFTBuys),
+              InfluencerButton("kanshi", 100, InfluenceKind.CCSales),
+              InfluencerButton("DeSoNinja", 20123.1, InfluenceKind.Likes),
+            ],
+          ),
+        ),
+      )
+    );
+  }
+}
+
+class InfluencerButton extends StatelessWidget {
+
+  final String text;
+  final InfluenceKind kind;
+  final double value;
+
+  InfluencerButton(this.text, this.value, this.kind): super();
 
   IconData getIcon(InfluenceKind kind) {
     switch (kind) {
@@ -30,88 +83,41 @@ class Influencers extends StatelessWidget {
     }
   }
 
-  Widget showRow(String text, TextStyle? textStyle, Size size, double value, InfluenceKind kind) {
-    return Card(
-      elevation: 1,
-      child: Container(
-          child: SizedBox(
-              width: size.width * 0.22,
-              child: TextButton(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (size.width > ThemeSizes.small) Container(
-                        padding: EdgeInsets.only(left: size.width * 0.02),
-                        child: Icon(getIcon(kind), size: textStyle?.fontSize??12 * 1.7, color: textStyle?.color??Colors.indigoAccent),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: size.height * 0.005, horizontal: size.width * 0.02),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(NumberFormat.compact().format(value), style: textStyle?.copyWith(fontSize: textStyle?.fontSize??12 * 0.7),),
-                          if (size.width < ThemeSizes.small) Icon(getIcon(kind), size: textStyle?.fontSize??12 * 1.7, color: textStyle?.color??Colors.indigoAccent),
-                          Text("TOP 5", style: textStyle?.copyWith(fontSize: textStyle?.fontSize??12 * 0.7),),
-                        ],
-                      ),
-                    ),
-                    if (size.width > ThemeSizes.small) Container(
-                        padding: EdgeInsets.only(top: size.height * 0.015, bottom: size.height * 0.015, left: textStyle?.fontSize??12 * 0.7),
-                        child: Text(
-                          (text.length > 15)? text.substring(0, 15) + "..." : text,
-                          style: textStyle?.copyWith(fontWeight: FontWeight.normal)
-                        )
-                    ),
-                    Spacer(),
-                  ],
-                ),
-                onPressed: () {},
-              )
-          )
-      )
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    TextStyle? textStyle = Theme.of(context).textTheme.subtitle1;
-    return Expanded(child: SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: Container(
-        child: Column(
-          children: [
-            showRow("kanshi", textStyle, size, 100, InfluenceKind.Diamonds),
-            showRow("DeSoNinja", textStyle, size, 20123.1, InfluenceKind.CCBuys),
-            showRow("love4src", textStyle, size, 912, InfluenceKind.NFTSales),
-            showRow("astronation", textStyle, size, 12, InfluenceKind.Posts),
-            showRow("yexperiment", textStyle, size, 10122, InfluenceKind.NFTBuys),
-            showRow("kanshi", textStyle, size, 100, InfluenceKind.CCSales),
-            showRow("DeSoNinja", textStyle, size, 20123.1, InfluenceKind.Likes),
-            showRow("kanshi", textStyle, size, 100, InfluenceKind.Diamonds),
-            showRow("DeSoNinja", textStyle, size, 20123.1, InfluenceKind.CCBuys),
-            showRow("love4src", textStyle, size, 912, InfluenceKind.NFTSales),
-            showRow("astronation", textStyle, size, 12, InfluenceKind.Posts),
-            showRow("yexperiment", textStyle, size, 10122, InfluenceKind.NFTBuys),
-            showRow("kanshi", textStyle, size, 100, InfluenceKind.CCSales),
-            showRow("DeSoNinja", textStyle, size, 20123.1, InfluenceKind.Likes),
-            showRow("kanshi", textStyle, size, 100, InfluenceKind.Diamonds),
-            showRow("DeSoNinja", textStyle, size, 20123.1, InfluenceKind.CCBuys),
-            showRow("love4src", textStyle, size, 912, InfluenceKind.NFTSales),
-            showRow("astronation", textStyle, size, 12, InfluenceKind.Posts),
-            showRow("yexperiment", textStyle, size, 10122, InfluenceKind.NFTBuys),
-            showRow("kanshi", textStyle, size, 100, InfluenceKind.CCSales),
-            showRow("DeSoNinja", textStyle, size, 20123.1, InfluenceKind.Likes),
-            showRow("kanshi", textStyle, size, 100, InfluenceKind.Diamonds),
-            showRow("DeSoNinja", textStyle, size, 20123.1, InfluenceKind.CCBuys),
-            showRow("love4src", textStyle, size, 912, InfluenceKind.NFTSales),
-            showRow("astronation", textStyle, size, 12, InfluenceKind.Posts),
-            showRow("yexperiment", textStyle, size, 10122, InfluenceKind.NFTBuys),
-            showRow("kanshi", textStyle, size, 100, InfluenceKind.CCSales),
-            showRow("DeSoNinja", textStyle, size, 20123.1, InfluenceKind.Likes),
-          ],
-        ),
-      ),
-    ));
+    return Container(
+        padding: EdgeInsets.all((Theme.of(context).textTheme.headline6?.fontSize??12) * 0.05,),
+        child: TextButton(
+          child: Container(
+            padding: EdgeInsets.all(0.6 * (Theme.of(context).textTheme.headline6?.fontSize??12),),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  child: Icon(getIcon(kind), size: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12)),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: (Theme.of(context).textTheme.headline6?.fontSize??12)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(NumberFormat.compact().format(value), style: Theme.of(context).textTheme.caption),
+                      Text("TOP 5", style: Theme.of(context).textTheme.caption),
+                    ],
+                  ),
+                ),
+                Container(
+                    child: Text(
+                        (text.length > 20)? text.substring(0, 20) + "..." : text,
+                        style: Theme.of(context).textTheme.headline6
+                    )
+                ),
+              ],
+            ),
+          ),
+          onPressed: () {},
+        )
+    );
   }
 }

@@ -19,7 +19,7 @@ class DefaultLayout extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           Column(children: [ BrandLogo(), MainMenu(), Profile(), ], ),
-          Column(children: [ SearchBar(), PostsFeed(), ], ),
+    Expanded(child: Column(children: [ SearchBar(), PostsFeed(), ], )),
           Column(children: [ UserStatus(), Influencers(), ], ),
         ],
       )

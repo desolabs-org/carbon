@@ -7,7 +7,7 @@ class SearchBar extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     TextStyle? textStyle = Theme.of(context).textTheme.subtitle1?.copyWith(fontWeight: FontWeight.bold);
     return Container(
-        width: size.width * 0.3,
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         child: TextField(
           style: textStyle,
           decoration: InputDecoration(

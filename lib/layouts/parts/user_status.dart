@@ -1,5 +1,3 @@
-
-import 'package:carbon/themes/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -8,42 +6,36 @@ class UserStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     double balance = 123.12348234;
     double equiv = 1233.12;
-    Size size = MediaQuery.of(context).size;
-    TextStyle? textStyle = Theme.of(context).textTheme.subtitle1?.copyWith(fontWeight: FontWeight.bold);
     return Container(
-        child: SizedBox(
-            width: size.width * 0.22,
-            child: TextButton(
+        child: TextButton(
+            onPressed: () {},
+            child: Container(
+              padding: EdgeInsets.all(0.75 * (Theme.of(context).textTheme.headline6?.fontSize??12)),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  if (size.width > ThemeSizes.small) Container(
-                    padding: EdgeInsets.only(left: size.width * 0.02),
-                    child: Icon(Icons.account_balance_wallet_outlined, size: textStyle?.fontSize??12 * 1.7, color: textStyle?.color??Colors.indigoAccent),
+                  Container(
+                    child: Icon(Icons.account_balance_wallet_outlined, size: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12)),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: size.height * 0.005, horizontal: size.width * 0.02),
+                    padding: EdgeInsets.symmetric(horizontal: (Theme.of(context).textTheme.headline6?.fontSize??12)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("\$DESO", style: textStyle?.copyWith(fontSize: textStyle?.fontSize??12 * 0.7),),
-                        Text(NumberFormat.compact().format(balance), style: textStyle,),
+                        Text("DESO", style: Theme.of(context).textTheme.caption),
+                        Text(NumberFormat.compact().format(balance), style: Theme.of(context).textTheme.caption),
                       ],
                     ),
                   ),
-                  if (size.width > ThemeSizes.small) Container(
-                      padding: EdgeInsets.only(top: size.height * 0.015, bottom: size.height * 0.015, left: textStyle?.fontSize??12 * 0.7),
-                      child: Text(
-                          NumberFormat.compact().format(equiv) + " \$USD",
-                          style: textStyle?.copyWith(fontWeight: FontWeight.normal)
+                  Container(
+                      child: Text(NumberFormat.compact().format(equiv) + " \$USD",
+                          style: Theme.of(context).textTheme.headline6
                       )
                   ),
-                  Spacer(),
                 ],
               ),
-              onPressed: () {},
-            )
+            ),
         )
     );
   }

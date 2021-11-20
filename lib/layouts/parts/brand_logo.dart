@@ -1,11 +1,11 @@
-import 'package:carbon/models/deso_sdk_manager.dart';
+import 'package:carbon/models/deso_node_data.dart';
 import 'package:flutter/material.dart';
 
 class BrandLogo extends StatelessWidget {
 
-  DesoSdkManager _desoSdkManager;
+  DesoNodeData _desoNodeData;
 
-  BrandLogo(this._desoSdkManager): super();
+  BrandLogo(this._desoNodeData): super();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class BrandLogo extends StatelessWidget {
                     padding: EdgeInsets.only(
                       left: 0.75 * (Theme.of(context).textTheme.headline6?.fontSize??12),
                     ),
-                    child: Text(_desoSdkManager.desoSdk.client.host??"", style: Theme.of(context).textTheme.headline6)
+                    child: Text(_desoNodeData.apiEndpoint, style: Theme.of(context).textTheme.headline6)
                 ),
               ],
             ),

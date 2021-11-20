@@ -16,16 +16,23 @@ class DefaultLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       primary: true,
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Column(children: [ BrandLogo(_desoNodeData), MainMenu(), Profile(), ], ),
+          Padding(
+            padding: EdgeInsets.only(left: size.width * 0.1, right: size.width * 0.02),
+            child: Column(children: [ BrandLogo(_desoNodeData), MainMenu(), Profile(), ], ),
+          ),
           Expanded(child: Column(children: [ SearchBar(), PostsFeed(), ], )),
-          Column(children: [ UserStatus(), Influencers(), ], ),
+          Padding(
+            padding: EdgeInsets.only(right: size.width * 0.1, left: size.width * 0.02),
+            child: Column(children: [ UserStatus(), Influencers(), ], ),
+          ),
         ],
       )
     );

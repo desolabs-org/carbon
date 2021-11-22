@@ -1,3 +1,4 @@
+import 'package:carbon/themes/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:carbon/generated/l10n.dart';
 
@@ -40,20 +41,21 @@ class MainMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double refSize = (Theme.of(context).textTheme.headline6?.fontSize??12);
     return Container(
-        padding: EdgeInsets.symmetric(vertical: (Theme.of(context).textTheme.headline6?.fontSize??12) * 0.05,),
         child: TextButton(
           child: Container(
-            padding: EdgeInsets.all((Theme.of(context).textTheme.headline6?.fontSize??12) * 0.6,),
+            padding: EdgeInsets.all(refSize * 0.6,),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  child: Icon(iconData, size: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12))
+                  child: Icon(iconData, size: 1.5 * refSize)
                 ),
-                Container(
+                if(size.width > Layout.boundary) Container(
                     padding: EdgeInsets.only(
-                      left: 0.75 * (Theme.of(context).textTheme.headline6?.fontSize??12),
+                      left: 0.75 * refSize,
                     ),
                     child: Text(title, style: Theme.of(context).textTheme.headline6)
                 ),

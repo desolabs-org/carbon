@@ -1,3 +1,4 @@
+import 'package:carbon/themes/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -85,36 +86,39 @@ class InfluencerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double refSize = (Theme.of(context).textTheme.headline6?.fontSize??12);
     return Card(
       elevation: 0,
         child: Container(
           child: TextButton(
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: (Theme.of(context).textTheme.headline6?.fontSize??12) * 0.25,),
+              padding: EdgeInsets.all(0.25 * refSize),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    width: 5 * (Theme.of(context).textTheme.headline6?.fontSize??12),
+                    width: 5 * refSize,
+                    padding: EdgeInsets.all(0.25 * refSize),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(NumberFormat.compact().format(value), style: Theme.of(context).textTheme.caption),
                         Container(
-                          child: Icon(getIcon(kind), size: 1 * (Theme.of(context).textTheme.headline6?.fontSize??12)),
+                          child: Icon(getIcon(kind), size: refSize),
                         ),
                         Text("TOP 5", style: Theme.of(context).textTheme.caption),
                       ],
                     ),
                   ),
                   Container(
-                      padding: EdgeInsets.only(right: 2 * (Theme.of(context).textTheme.headline6?.fontSize??12)),
+                      padding: EdgeInsets.only(right: 2 * refSize),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            padding: EdgeInsets.only(bottom: 0.25 * (Theme.of(context).textTheme.button?.fontSize??10)),
+                            padding: EdgeInsets.only(bottom: 0.25 * refSize),
                             child: Text(
                               (text.length > 20)? text.substring(0, 20) + "..." : text,
                               style: Theme.of(context).textTheme.button
@@ -124,18 +128,10 @@ class InfluencerButton extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Icon(Icons.check_circle_outline_outlined,
-                                  size: (Theme.of(context).textTheme.headline6?.fontSize??12)
-                              ),
-                              Icon(Icons.palette_outlined,
-                                  size: (Theme.of(context).textTheme.headline6?.fontSize??12)
-                              ),
-                              Icon(Icons.monetization_on_outlined,
-                                  size: (Theme.of(context).textTheme.headline6?.fontSize??12)
-                              ),
-                              Icon(Icons.star_outline,
-                                  size: (Theme.of(context).textTheme.headline6?.fontSize??12)
-                              ),
+                              Icon(Icons.check_circle_outline_outlined, size: refSize),
+                              Icon(Icons.palette_outlined, size: refSize),
+                              Icon(Icons.monetization_on_outlined, size: refSize),
+                              Icon(Icons.star_outline, size: refSize),
                             ],
                           )
                         ]

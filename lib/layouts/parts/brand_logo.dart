@@ -1,4 +1,5 @@
 import 'package:carbon/models/deso_node_data.dart';
+import 'package:carbon/themes/layout.dart';
 import 'package:flutter/material.dart';
 
 class BrandLogo extends StatelessWidget {
@@ -9,26 +10,24 @@ class BrandLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double refSize = (Theme.of(context).textTheme.headline6?.fontSize??12);
     return Container(
-        padding: EdgeInsets.symmetric(
-            vertical: (Theme.of(context).textTheme.headline6?.fontSize??12) * 0.5,
-            horizontal: (Theme.of(context).textTheme.headline6?.fontSize??12) * 0.5
-        ),
         child: TextButton(
           child: Container(
-            padding: EdgeInsets.all((Theme.of(context).textTheme.headline6?.fontSize??12) * 0.6,),
+            padding: EdgeInsets.all(refSize * 0.6,),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   child: Image.asset("images/deso_ninja.png",
-                      width: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12),
-                      height: 1.5 * (Theme.of(context).textTheme.headline6?.fontSize??12)
+                      width: 1.5 * refSize,
+                      height: 1.5 * refSize
                   ),
                 ),
-                Container(
+                if(size.width > Layout.boundary) Container(
                     padding: EdgeInsets.only(
-                      left: 0.75 * (Theme.of(context).textTheme.headline6?.fontSize??12),
+                      left: 0.75 * refSize
                     ),
                     child: Text(_desoNodeData.apiEndpoint, style: Theme.of(context).textTheme.headline6)
                 ),

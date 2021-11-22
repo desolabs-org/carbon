@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:carbon/themes/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -8,7 +9,7 @@ class PostsFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double preferredColumnWidth = (Theme.of(context).textTheme.bodyText1?.fontSize??12) * 42;
+    double preferredColumnWidth = (Theme.of(context).textTheme.headline6?.fontSize??12) * 42;
     int maxColumns = max(1, (size.width / preferredColumnWidth).floor());
     return Expanded(
         child: CustomScrollView(
@@ -20,8 +21,8 @@ class PostsFeed extends StatelessWidget {
               staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
               itemBuilder: (BuildContext context, int index) => SocialPost(),
               itemCount: 100,
-              mainAxisSpacing: 4.0,
-              crossAxisSpacing: 4.0
+              mainAxisSpacing: Layout.marginSmall(size.width),
+              crossAxisSpacing: Layout.marginSmall(size.width)
             )
           ],
       )

@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 class DefaultLayout extends StatelessWidget {
 
-  DesoNodeData _desoNodeData;
+  final DesoNodeData _desoNodeData;
 
   DefaultLayout(this._desoNodeData): super();
 
@@ -33,7 +33,7 @@ class DefaultLayout extends StatelessWidget {
             child: Column(children: [ BrandLogo(_desoNodeData), MainMenu(), Profile(), ], ),
           ),
           Expanded(child: Column(children: [ SearchBar(),
-            Container(child: Text("Feed Header"),), PostsFeed(), ], )),
+            PostsFeed(_desoNodeData), ], )),
           if (size.width > Layout.boundary) Padding(
             padding: EdgeInsets.only(
                 left: Layout.marginSmall(size.width),

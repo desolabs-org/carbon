@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:carbon/themes/bright.dart';
 import 'package:carbon/themes/dark.dart';
 import 'package:flutter/cupertino.dart';

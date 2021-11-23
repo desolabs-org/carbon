@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:deso_sdk/deso_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:deso_sdk/src/model/general/app_state.model.dart';
+import 'package:http/http.dart' as http;
 
 class DesoNodeData extends ChangeNotifier {
 
@@ -54,5 +57,42 @@ class DesoNodeData extends ChangeNotifier {
   }
 
   double get exchangeUSD => (_appState?.usdCentsPerDeSoExchangeRate??_defaultDesoExchangeRateUSD) / 100;
+
+  Future<Map<dynamic, dynamic>> getGlobalFeed() async {
+    final client = new http.Client();
+    Map<dynamic, dynamic> responseData = {};
+    try {
+      final response = await client.post(
+          Uri.https(_apiEndpoint, 'api/v0/get-posts-stateless'),
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: jsonEncode(
+          {
+            "PostHashHex": "",
+            "ReaderPublicKeyBase58Check": "BC1YLhwpmWkgk2iM9yTSxzgUVhYjgessSPTiVHkkK9pMrhweqJnWrvK",
+            "OrderBy": "",
+            "StartTstampSecs": null,
+            "PostContent": "",
+            "NumToFetch": 4,
+            "FetchSubcomments": false,
+            "GetPostsForFollowFeed": false,
+            "GetPostsForGlobalWhitelist": true,
+            "GetPostsByDESO": false,
+            "MediaRequired": false,
+            "PostsByDESOMinutesLookback": 0,
+            "AddGlobalFeedBool": true
+          }));
+      if (response.statusCode == 200) {
+        responseData = jsonDecode(response.body) as Map<dynamic, dynamic>;
+      }
+    } catch(e) {
+      debugPrint(e.toString());
+    } finally {
+      client.close();
+    }
+
+    return responseData;
+  }
 
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class BrandLogo extends StatelessWidget {
 
-  DesoNodeData _desoNodeData;
+  final DesoNodeData _desoNodeData;
 
   BrandLogo(this._desoNodeData): super();
 

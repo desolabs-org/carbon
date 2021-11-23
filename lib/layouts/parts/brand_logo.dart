@@ -15,7 +15,7 @@ class BrandLogo extends StatelessWidget {
     return Container(
         child: TextButton(
           child: Container(
-            padding: EdgeInsets.all(refSize * 0.6,),
+            padding: EdgeInsets.all(refSize * 0.75,),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

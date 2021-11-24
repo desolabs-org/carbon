@@ -69,7 +69,9 @@ class SocialPost extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  //Image.asset("images/kanshi.png", height: 24,),
+                  Image.network(
+                      "https://love4src.com/api/v0/get-single-profile-picture/" + postData["ProfileEntryResponse"]["PublicKeyBase58Check"] + "?fallback=https://love4src.com/assets/img/default_profile_pic.png",
+                  height: 32,),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 12),
                     child: Text(postData["ProfileEntryResponse"]["Username"]??postData["ProfileEntryResponse"]["PublicKeyBase58Check"], style: Theme.of(context).textTheme.caption,)

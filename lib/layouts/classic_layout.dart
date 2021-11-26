@@ -1,3 +1,5 @@
+import 'package:carbon/app.dart';
+import 'package:carbon/layouts/layout_manager.dart';
 import 'package:carbon/layouts/parts/brand_logo.dart';
 import 'package:carbon/layouts/parts/influencers.dart';
 import 'package:carbon/layouts/parts/main_menu.dart';
@@ -5,19 +7,13 @@ import 'package:carbon/layouts/parts/posts_feed.dart';
 import 'package:carbon/layouts/parts/profile.dart';
 import 'package:carbon/layouts/parts/search_bar.dart';
 import 'package:carbon/layouts/parts/user_status.dart';
-import 'package:carbon/models/deso_node_data.dart';
-import 'package:carbon/themes/layout.dart';
 import 'package:flutter/material.dart';
 
-class DefaultLayout extends StatelessWidget {
 
-  final DesoNodeData _desoNodeData;
-
-  DefaultLayout(this._desoNodeData): super();
-
+class ClassicLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    App? app = App.of(context);
     return Scaffold(
       primary: true,
       body: Row(
@@ -27,19 +23,22 @@ class DefaultLayout extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(
-                left: Layout.marginLarge(size.width),
-                right: Layout.marginSmall(size.width)
+                left: app?.layout?.paddingLarge??1, right: app?.layout?.paddingSmall??0,
             ),
-            child: Column(children: [ BrandLogo(_desoNodeData), MainMenu(), Profile(), ], ),
+            child: Column(
+              children: [ BrandLogo(), MainMenu(), Profile(), ],
+            ),
           ),
-          Expanded(child: Column(children: [ SearchBar(),
-            PostsFeed(_desoNodeData), ], )),
-          if (size.width > Layout.boundary) Padding(
+          Expanded(child: Column(
+            children: [ SearchBar(), PostsFeed(), ],
+          )),
+          if ((app?.layout?.kind??LayoutSize.Medium) != LayoutSize.Small) Padding(
             padding: EdgeInsets.only(
-                left: Layout.marginSmall(size.width),
-                right: Layout.marginLarge(size.width)
+                left: app?.layout?.paddingSmall??0, right: app?.layout?.paddingLarge??1
             ),
-            child: Column(children: [ UserStatus(), Influencers(), ], ),
+            child: Column(
+              children: [ UserStatus(), Influencers(), ],
+            ),
           ),
         ],
       )

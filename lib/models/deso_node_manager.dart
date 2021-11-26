@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:deso_sdk/src/model/general/app_state.model.dart';
 import 'package:http/http.dart' as http;
 
-class DesoNodeData extends ChangeNotifier {
+class DesoNodeManager extends ChangeNotifier {
 
   static final String _defaultEndpoint = "love4src.com";
   static final int _defaultDesoExchangeRateUSD = 8000;
@@ -20,7 +20,7 @@ class DesoNodeData extends ChangeNotifier {
   
   AppState? _appState;
 
-  DesoNodeData(this.sharedPreferences) {
+  DesoNodeManager(this.sharedPreferences) {
     _load();
     _initialize();
   }

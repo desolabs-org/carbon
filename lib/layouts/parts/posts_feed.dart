@@ -1,24 +1,24 @@
 import 'dart:math';
-import 'package:carbon/models/deso_node_data.dart';
-import 'package:carbon/themes/layout.dart';
+import 'package:carbon/app.dart';
+import 'package:carbon/models/deso_node_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class PostsFeed extends StatelessWidget {
   ScrollController _scrollController = new ScrollController();
-  final DesoNodeData _desoNodeData;
-
-  PostsFeed(this._desoNodeData) : super();
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    App? app = App.of(context);
+    DesoNodeManager? _desoNodeData = app?.data;
+
+    double screenWidth = MediaQuery.of(context).size.width;
     double preferredColumnWidth = (Theme.of(context).textTheme.headline6?.fontSize??12) * 42;
-    int maxColumns = max(1, (size.width / preferredColumnWidth).floor());
+    int maxColumns = max(1, (screenWidth / preferredColumnWidth).floor());
     return Expanded(
       child: FutureBuilder<Map<dynamic, dynamic>>(
         initialData: {"posts": "adata"},
-        future: _desoNodeData.getGlobalFeed(),
+        future: _desoNodeData?.getGlobalFeed(),
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
             final data = snapshot.data as Map<dynamic, dynamic>;
@@ -33,8 +33,8 @@ class PostsFeed extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) =>
                           SocialPost((data["PostsFound"] as List<dynamic>)[index] as Map<dynamic, dynamic>),
                       itemCount: data["PostsFound"].length,
-                      mainAxisSpacing: Layout.marginSmall(size.width),
-                      crossAxisSpacing: Layout.marginSmall(size.width)
+                      mainAxisSpacing: app?.layout?.paddingSmall??2,
+                      crossAxisSpacing: app?.layout?.paddingSmall??2
                   )
                 ],
               );

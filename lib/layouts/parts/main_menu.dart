@@ -1,4 +1,5 @@
-import 'package:carbon/themes/layout.dart';
+import 'package:carbon/app.dart';
+import 'package:carbon/layouts/layout_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:carbon/generated/l10n.dart';
 
@@ -10,7 +11,6 @@ class MainMenu extends StatelessWidget {
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: (Theme.of(context).textTheme.headline6?.fontSize??12) * 0.5,),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -41,8 +41,9 @@ class MainMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    double refSize = (Theme.of(context).textTheme.headline6?.fontSize??12);
+    App? app = App.of(context);
+    LayoutSize size = app?.layout?.size??LayoutManager.defaultSize;
+    num refSize = (Theme.of(context).textTheme.headline6?.fontSize??LayoutManager.defaultRefSize);
     return Container(
         child: TextButton(
           child: Container(
@@ -53,9 +54,9 @@ class MainMenuButton extends StatelessWidget {
                 Container(
                   child: Icon(iconData, size: 1.5 * refSize)
                 ),
-                if(size.width > Layout.boundary) Container(
+                if(size != LayoutSize.Small) Container(
                     padding: EdgeInsets.only(
-                      left: 0.75 * refSize,
+                      left: 0.6 * refSize,
                     ),
                     child: Text(title, style: Theme.of(context).textTheme.headline6)
                 ),

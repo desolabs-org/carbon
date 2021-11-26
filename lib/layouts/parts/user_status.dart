@@ -1,5 +1,6 @@
-import 'package:carbon/models/deso_node_data.dart';
-import 'package:carbon/themes/layout.dart';
+import 'package:carbon/app.dart';
+import 'package:carbon/layouts/layout_manager.dart';
+import 'package:carbon/models/deso_node_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -8,9 +9,10 @@ class UserStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double balance = 123.12348234;
-    Size size = MediaQuery.of(context).size;
-    double refSize = (Theme.of(context).textTheme.headline6?.fontSize??12);
-    return Consumer<DesoNodeData>(builder: (context, desoNodeData, _) {
+    App? app = App.of(context);
+    num refSize = app?.layout?.refSize??LayoutManager.defaultRefSize;
+    LayoutSize size = app?.layout?.size??LayoutManager.defaultSize;
+    return Consumer<DesoNodeManager>(builder: (context, desoNodeData, _) {
       return Container(
           child: TextButton(
             onPressed: () {},
@@ -19,11 +21,11 @@ class UserStatus extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  if (size.width > Layout.boundary) Container(
+                  if (size != LayoutSize.Small) Container(
                     child: Icon(Icons.account_balance_wallet_outlined, size: 1.5 * refSize),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: refSize),
+                    padding: EdgeInsets.symmetric(horizontal: refSize.toDouble()),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,

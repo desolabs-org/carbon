@@ -38,9 +38,9 @@ job "carbon-prod" {
         check {
           name     = "Carbon Frontend HTTP"
           type     = "http"
-          path     = "/index.html"
+          path     = "/"
           interval = "15s"
-          timeout  = "5s"
+          timeout  = "30s"
           check_restart {
             limit = 3
             grace = "30s"
@@ -50,16 +50,13 @@ job "carbon-prod" {
       }
 
       resources {
-        cpu = 4096
-        memory = 8192
+        cpu = 32
+        memory = 32
         network {
           mbits = 10
           port "http" {
             to = 80
           }
-          port "akka" {}
-          port "management" {}
-          port "prometheus" {}
         }
       }
     }

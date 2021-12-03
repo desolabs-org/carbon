@@ -38,7 +38,7 @@ job "carbon-prod" {
         check {
           name     = "Carbon Frontend HTTP"
           type     = "http"
-          path     = "/health"
+          path     = "/index.html"
           interval = "15s"
           timeout  = "5s"
           check_restart {

@@ -12,7 +12,7 @@ build_live:
   image: docker:stable
   script:
     - echo "$DEPLOY_DOCKER_PASS" | docker login -u "$DEPLOY_DOCKER_USER" --password-stdin registry.gitlab.com
-    - docker build --pull --tag "${CI_REGISTRY}/${CI_PROJECT_NAME}:${CI_COMMIT_SHA}"
+    - docker build --pull --tag "${CI_REGISTRY}/${CI_PROJECT_NAME}:${CI_COMMIT_SHA}" .
     - docker push "${CI_REGISTRY}/${CI_PROJECT_NAME}:${CI_COMMIT_SHA}"
   only:
     - live

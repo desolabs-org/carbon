@@ -55,12 +55,27 @@ class LayoutManager extends ChangeNotifier {
     );
   }
 
-  void updateFor(BuildContext context) {
+  bool updateFor(BuildContext context) {
+    bool result = false;
     Size size = MediaQuery.of(context).size;
-    this.refSize = (Theme.of(context).textTheme.headline6?.fontSize??defaultRefSize);
-    this.paddingSmall = _paddingSmall(size.width);
-    this.paddingLarge = _paddingLarge(size.width);
-    this.size = ((size.width) > boundaryLarge)? LayoutSize.Large :
-      ((size.width) > boundarySmall)? LayoutSize.Medium : LayoutSize.Small;
+
+    num newRefSize = (Theme.of(context).textTheme.headline6?.fontSize??defaultRefSize);
+    result = result || (this.refSize != newRefSize);
+    this.refSize = newRefSize;
+
+    double newPaddingSmall = _paddingSmall(size.width);
+    result = result || (this.paddingSmall != newPaddingSmall);
+    this.paddingSmall = newPaddingSmall;
+
+    double newPaddingLarge = _paddingLarge(size.width);
+    result = result || (this.paddingLarge != newPaddingLarge);
+    this.paddingLarge = newPaddingLarge;
+
+    LayoutSize newSize = ((size.width) > boundaryLarge)? LayoutSize.Large :
+    ((size.width) > boundarySmall)? LayoutSize.Medium : LayoutSize.Small;
+    result = result || (this.size != newSize);
+    this.size = newSize;
+
+    return result;
   }
 }

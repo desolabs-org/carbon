@@ -30,7 +30,7 @@ class ClassicLayout extends StatelessWidget {
             ),
           ),
           Expanded(child: Column(
-            children: [ SearchBar(), PostsFeed(), ],
+            children: [ SearchBar(), Expanded(child: PostsFeed()), ],
           )),
           if ((app?.layout?.kind??LayoutSize.Medium) != LayoutSize.Small) Padding(
             padding: EdgeInsets.only(

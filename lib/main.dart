@@ -1,5 +1,6 @@
 import 'package:carbon/app.dart';
 import 'package:carbon/generated/l10n.dart';
+import 'package:carbon/layouts/desogram.dart';
 import 'package:carbon/layouts/layout_manager.dart';
 import 'package:carbon/models/deso_node_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -50,7 +51,9 @@ class CarbonApp extends StatelessWidget {
                   data: desoNodeData,
                   theme: themeManager,
                   layout: layoutManager,
-                  child: ClassicLayout(),
+                  child:
+                  DesoGramLayout(),
+                  //ClassicLayout(),
                 ),
               );
             }

@@ -14,8 +14,6 @@ build_live:
     - echo "$DEPLOY_DOCKER_PASS" | docker login -u "$DEPLOY_DOCKER_USER" --password-stdin registry.gitlab.com
     - docker build --pull --tag "${CI_REGISTRY}/${CI_PROJECT_NAME}:${CI_COMMIT_SHA}"
     - docker push "${CI_REGISTRY}/${CI_PROJECT_NAME}:${CI_COMMIT_SHA}"
-  tags:
-    - prod
   only:
     - live
 
@@ -24,8 +22,6 @@ deploy_live:
   image: hashicorp/levant:0.3.0
   script:
     - levant deploy -address="${NOMAD_HTTP_ADDR}" -var "commit_sha=${CI_COMMIT_SHA}" carbon-prod.hcl
-  tags:
-    - prod
   only:
     - live
 

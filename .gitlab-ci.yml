@@ -1,3 +1,35 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  NOMAD_HTTP_ADDR: "http://65.21.92.186:4646"
+  CI_REGISTRY: "registry.gitlab.com/love4src"
+  PATH: "/tmp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+services:
+  - docker:dind
+
+build_live:
+  stage: build
+  image: docker:stable
+  script:
+    - echo "$DEPLOY_DOCKER_PASS" | docker login -u "$DEPLOY_DOCKER_USER" --password-stdin registry.gitlab.com
+    - docker build --pull --tag "${CI_REGISTRY}/${CI_PROJECT_NAME}:${CI_COMMIT_SHA}"
+    - docker push "${CI_REGISTRY}/${CI_PROJECT_NAME}:${CI_COMMIT_SHA}"
+  tags:
+    - prod
+  only:
+    - live
+
+deploy_live:
+  stage: deploy
+  image: hashicorp/levant:0.3.0
+  script:
+    - levant deploy -address="${NOMAD_HTTP_ADDR}" -var "commit_sha=${CI_COMMIT_SHA}" carbon-prod.hcl
+  tags:
+    - prod
+  only:
+    - live
+
+
 build_web:
   stage: build
   image: cirrusci/flutter:stable
@@ -9,6 +41,8 @@ build_web:
   artifacts:
     paths:
       - build/web
+  only:
+    - pages
 
 pages:
   stage: deploy
@@ -19,4 +53,4 @@ pages:
     paths:
       - public
   only:
-    - live
+    - pages

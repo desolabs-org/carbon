@@ -12,10 +12,10 @@ job "carbon-prod" {
       driver = "docker"
 
       config {
-        image = "registry.gitlab.com/love4src/carbon/carbon:[[.commit_sha]]"
+        image = "registry.gitlab.com/love4src/carbon:[[.commit_sha]]"
         auth {
-          username = "gitlab+deploy-token-526771"
-          password = "Z16KscrcGQey4LeXyFjM"
+          username = "gitlab+deploy-token-674866"
+          password = "5s5mzsimmP9XC9AHDreo"
         }
       }
 

@@ -12,7 +12,7 @@ job "carbon-prod" {
       driver = "docker"
 
       config {
-        image = "registry.gitlab.com/love4src/carbon:4b89b316acf5983d8b5f26f9bf365753135e2389"
+        image = "registry.gitlab.com/love4src/carbon:[[.commit_sha]]"
         auth {
           username = "gitlab+deploy-token-674866"
           password = "5s5mzsimmP9XC9AHDreo"
@@ -38,6 +38,7 @@ server {
     location / {
         root   /usr/share/nginx/html;
         index index.html;
+        try_files $uri =404;
     }
 }
 EOF

@@ -35,9 +35,16 @@ server {
     add_header X-Content-Type-Options nosniff;
     add_header X-XSS-Protection "1; mode=block";
     add_header Content-Security-Policy "default-src 'self';connect-src 'self' https://unpkg.com https://fonts.gstatic.com https://api.love4src.com;script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com;style-src 'self' 'unsafe-inline';img-src 'self' data: https://i.imgur.com https://images.bitclout.com https://images.deso.org https://gfx.love4src.com https://arweave.net https://*.arweave.net https://cloudflare-ipfs.com https://quickchart.io; font-src 'self'; frame-src 'self'; frame-ancestors 'self';";
+    location /health {
+      add_header Content-Type text/plain;
+      return 200 'ok';
+    }
     location / {
         root   /usr/share/nginx/html;
         index index.html;
+    }
+    location /assets/ {
+        root   /usr/share/nginx/html/assets;
         try_files $uri =404;
     }
 }
@@ -62,7 +69,7 @@ EOF
         check {
           name     = "Carbon Frontend HTTP"
           type     = "http"
-          path     = "/"
+          path     = "/health"
           interval = "15s"
           timeout  = "30s"
           check_restart {

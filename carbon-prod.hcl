@@ -17,6 +17,32 @@ job "carbon-prod" {
           username = "gitlab+deploy-token-674866"
           password = "5s5mzsimmP9XC9AHDreo"
         }
+        volumes = [
+          "local/default.conf:/etc/nginx/conf.d/default.conf",
+        ]
+      }
+
+      env {
+        NGINX_PORT="${NOMAD_PORT_http}"
+      }
+
+      template {
+        data = <<EOF
+server {
+    listen {{ env "NOMAD_PORT_http" }};
+
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Content-Security-Policy "default-src 'self';connect-src 'self' https://unpkg.com https://fonts.gstatic.com https://api.love4src.com;script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com;style-src 'self' 'unsafe-inline';img-src 'self' data: https://i.imgur.com https://images.bitclout.com https://images.deso.org https://gfx.love4src.com https://arweave.net https://*.arweave.net https://cloudflare-ipfs.com https://quickchart.io; font-src 'self'; frame-src 'self'; frame-ancestors 'self';";
+    location / {
+        root   /usr/share/nginx/html;
+        try_files $uri =404;
+        index  index.html;
+    }
+}
+EOF
+        destination = "local/default.conf"
       }
 
       service {
@@ -30,9 +56,7 @@ job "carbon-prod" {
         ]
 
         meta {
-          amp = "${NOMAD_PORT_management}"
           sha = "[[.commit_sha]]"
-          prom = "${NOMAD_PORT_prometheus}"
         }
 
         check {
@@ -54,9 +78,7 @@ job "carbon-prod" {
         memory = 32
         network {
           mbits = 10
-          port "http" {
-            to = 80
-          }
+          port "http" {}
         }
       }
     }

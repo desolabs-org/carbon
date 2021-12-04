@@ -12,7 +12,7 @@ job "carbon-prod" {
       driver = "docker"
 
       config {
-        image = "registry.gitlab.com/love4src/carbon:[[.commit_sha]]"
+        image = "registry.gitlab.com/love4src/carbon:4b89b316acf5983d8b5f26f9bf365753135e2389"
         auth {
           username = "gitlab+deploy-token-674866"
           password = "5s5mzsimmP9XC9AHDreo"
@@ -37,8 +37,7 @@ server {
     add_header Content-Security-Policy "default-src 'self';connect-src 'self' https://unpkg.com https://fonts.gstatic.com https://api.love4src.com;script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com;style-src 'self' 'unsafe-inline';img-src 'self' data: https://i.imgur.com https://images.bitclout.com https://images.deso.org https://gfx.love4src.com https://arweave.net https://*.arweave.net https://cloudflare-ipfs.com https://quickchart.io; font-src 'self'; frame-src 'self'; frame-ancestors 'self';";
     location / {
         root   /usr/share/nginx/html;
-        try_files $uri =404;
-        index  index.html;
+        index index.html;
     }
 }
 EOF

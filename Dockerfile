@@ -29,5 +29,3 @@ RUN flutter build web
 # Stage 2 - Create the run-time image
 FROM nginx:1.21.4-alpine
 COPY --from=build-env /app/build/web /usr/share/nginx/html
-RUN mkdir -p /usr/share/nginx/html/assets
-COPY --from=build-env /app/assets/images /usr/share/nginx/html/assets

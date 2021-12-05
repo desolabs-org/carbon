@@ -12,32 +12,31 @@ class DesoGramLayout extends StatelessWidget {
     num refSize = (app?.layout?.refSize??LayoutManager.defaultRefSize);
     return Scaffold(
         primary: true,
-        body: Center(
-          child: Container(
-            constraints: BoxConstraints(maxWidth: 800),
-            child: CustomScrollView(
+        body: CustomScrollView(
+          primary: true,
+          slivers: [
+            SliverAppBar(
               primary: true,
-              slivers: [
-                SliverAppBar(
-                  primary: true,
-                  title: SearchBar(),
-                  floating: true,
-                  pinned: true,
-                  leading: SizedBox(child: BrandLogo(), width: 2.5 * refSize),
-                  leadingWidth: (2.5 * refSize),
-                  actions: [
-                    IconButton(onPressed: null, icon: Icon(Icons.home_outlined)),
-                    IconButton(onPressed: null, icon: Icon(Icons.message_outlined)),
-                    IconButton(onPressed: null, icon: Icon(Icons.add_circle_outline)),
-                    IconButton(onPressed: null, icon: Icon(Icons.explore_outlined)),
-                    IconButton(onPressed: null, icon: Icon(Icons.notifications_outlined)),
-                    IconButton(onPressed: null, icon: Icon(Icons.person_outline_rounded)),
-                  ],
-                ),
-                PostsFeed()
-              ],
-            )
-          )
+              floating: true,
+              pinned: true,
+              flexibleSpace: Row(
+                children: [
+                  Spacer(),
+                  SizedBox(child: Center(child: BrandLogo()), height: 2.5 * refSize, width: 2.5 * refSize),
+                  Text("Carbon", style: Theme.of(context).appBarTheme.titleTextStyle,),
+                  SearchBar(),
+                  IconButton(onPressed: null, icon: Icon(Icons.home_outlined)),
+                  IconButton(onPressed: null, icon: Icon(Icons.message_outlined)),
+                  IconButton(onPressed: null, icon: Icon(Icons.add_circle_outline)),
+                  IconButton(onPressed: null, icon: Icon(Icons.explore_outlined)),
+                  IconButton(onPressed: null, icon: Icon(Icons.notifications_outlined)),
+                  IconButton(onPressed: null, icon: Icon(Icons.person_outline_rounded)),
+                  Spacer()
+                ],
+              ),
+            ),
+            PostsFeed()
+          ],
         )
     );
   }

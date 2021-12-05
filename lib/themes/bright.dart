@@ -11,7 +11,8 @@ class BrightTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
       titleTextStyle: TextStyle(
-          color: Colors.black, fontStyle: FontStyle.italic,
+          color: Colors.black87,
+          fontStyle: FontStyle.italic,
           fontWeight: FontWeight.bold, fontSize: 24
       )
     )

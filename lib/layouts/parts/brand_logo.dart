@@ -16,7 +16,7 @@ class BrandLogo extends StatelessWidget {
 
     return TextButton(
       child: Container(
-        padding: EdgeInsets.all(4),
+        padding: EdgeInsets.all(6),
         child: Image.asset("images/deso_ninja.png",
           fit: BoxFit.contain,
         ),

@@ -58,7 +58,7 @@ EOF
 
         tags = [
           "l4s-proxy.enable=true",
-          "l4s-proxy.http.routers.l4s-carbon.rule=Host(`beta.love4src.com`)",
+          "l4s-proxy.http.routers.l4s-carbon.rule=Host(`carbon.love4src.com`)",
           "l4s-proxy.http.routers.l4s-carbon.entrypoints=https"
         ]
 

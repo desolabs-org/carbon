@@ -1,14 +1,14 @@
-job "carbon-prod" {
+job "l4s-carbon" {
 
-  datacenters = ["fin-yx"]
+  datacenters = ["l4s-fin"]
 
   type = "service"
 
-  group "carbon-prod-main" {
+  group "l4s-carbon-group" {
 
     count = 1
 
-    task "carbon-prod-task" {
+    task "l4s-carbon-task" {
       driver = "docker"
 
       config {
@@ -53,13 +53,13 @@ EOF
       }
 
       service {
-        name = "carbon-prod"
+        name = "l4s-carbon"
         port = "http"
 
         tags = [
-          "internal-proxy.enable=true",
-          "internal-proxy.http.routers.carbon-prod.rule=Host(`beta.love4src.com`)",
-          "internal-proxy.http.routers.carbon-prod.entrypoints=https"
+          "l4s-proxy.enable=true",
+          "l4s-proxy.http.routers.l4s-carbon.rule=Host(`beta.love4src.com`)",
+          "l4s-proxy.http.routers.l4s-carbon.entrypoints=https"
         ]
 
         meta {

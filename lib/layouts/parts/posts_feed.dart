@@ -1,6 +1,9 @@
+import 'dart:convert';
+import 'package:fast_base58/fast_base58.dart';
 import 'dart:math';
 import 'package:carbon/app.dart';
 import 'package:carbon/models/deso_node_manager.dart';
+import 'package:carbon/models/feed_data.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,20 +20,20 @@ class PostsFeed extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double preferredColumnWidth = (Theme.of(context).textTheme.headline6?.fontSize??12) * 42;
     int maxColumns = max(1, (screenWidth / preferredColumnWidth).floor());
-    return FutureBuilder<Map<dynamic, dynamic>>(
-        initialData: {"posts": "adata"},
-        future: _desoNodeData?.getGlobalFeed(),
+    return FutureBuilder<FeedData>(
+        future: _desoNodeData?.getFeedData("128b4a0b-4431-4e14-a6b5-3b000e40e0e7"),
+        // future: _desoNodeData?.getFeedData("83a526d6-654e-4aa2-b526-afd798162466"),
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
-            final data = snapshot.data as Map<dynamic, dynamic>;
-            if (data["PostsFound"] != null) {
-              var postsFound = data["PostsFound"] as List<dynamic>;
+            final data = snapshot.data as FeedData;
+
+            if ((data.posts?.length??0) > 0) {
               return SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
-                        return SocialPost(postsFound[index] as Map<dynamic, dynamic>);
+                        return SocialPost((data.posts??[])[index]);
                       },
-                      childCount: postsFound.length
+                      childCount: data.posts?.length??0
                     )
                 );
             } else return SliverToBoxAdapter(child: Container(
@@ -50,17 +53,17 @@ class PostsFeed extends StatelessWidget {
 
 class SocialPost extends StatelessWidget {
 
-  final Map<dynamic, dynamic> postData;
+  final PostData postData;
 
   SocialPost(this.postData) : super();
 
   @override
   Widget build(BuildContext context) {
     double postIconSize = (Theme.of(context).textTheme.button?.fontSize??12) * 3.0;
-    double desoLocked =
-    ((postData["ProfileEntryResponse"]["CoinEntry"] != null)?
-        postData["ProfileEntryResponse"]["CoinEntry"]["DeSoLockedNanos"]??0 : 0) / 1E9;
-    String? imageSrc = (postData["ImageURLs"] != null)? ((postData["ImageURLs"] as List<dynamic>).first as String) : null;
+    double desoLocked = (postData.accountData?.coin?.locked??0) / 1E9;
+    double coinPrice = (postData.accountData?.price??0) / 1E9;
+
+    String? imageSrc = postData.images?.first;
     return Container(
       child: Center(
         child: Container(
@@ -78,26 +81,41 @@ class SocialPost extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Image.network(
-                          "https://love4src.com/api/v0/get-single-profile-picture/" + postData["ProfileEntryResponse"]["PublicKeyBase58Check"] + "?fallback=https://love4src.com/assets/img/default_profile_pic.png",
-                      height: postIconSize, width: postIconSize,),
+                      // Text(utf8.decode((postData.author??[]).map((e) => (e + 127)).toList(), allowMalformed: true)),
+                      // Image.network(
+                      //     "https://love4src.com/api/v0/get-single-profile-picture/BC1YL" + Base58Encode((postData.author??[]).map((e) => e + 128).toList()) + "?fallback=https://love4src.com/assets/img/default_profile_pic.png",
+                      // height: postIconSize, width: postIconSize,),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                               padding: EdgeInsets.symmetric(horizontal: 12),
-                              child: Text(postData["ProfileEntryResponse"]["Username"]??postData["ProfileEntryResponse"]["PublicKeyBase58Check"],
+                              child: Text(postData.accountData?.nick??Base58Encode((postData.author??[]).map((e) => e + 128).toList()).substring(0, 32),
                                   style: TextStyle(fontWeight: FontWeight.bold))
                           ),
                           Container(
                               padding: EdgeInsets.symmetric(horizontal: 12),
-                              child: Text("" + desoLocked.toStringAsFixed(2) + " DESO staked",
-                                  style: Theme.of(context).textTheme.button)
-                          )
+                              child: Text(DateFormat.yMd().add_jms().format(DateTime.fromMillisecondsSinceEpoch(nanoStampToMillis(postData.timestamp), isUtc: true))),
+                          ),
                         ],
                       ),
                       Spacer(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 12),
+                            child: Text("" + coinPrice.toStringAsFixed(2) + " / CC",
+                                style: Theme.of(context).textTheme.button),
+                          ),
+                          Container(
+                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              child: Text("" + desoLocked.toStringAsFixed(2) + " staked")
+                          ),
+                        ],
+                      ),
                       IconButton(onPressed: () {}, icon: Icon(Icons.auto_awesome_outlined, 
                           color: (Theme.of(context).textTheme.caption?.color??Colors.black38),
                           size: postIconSize / 2
@@ -114,7 +132,7 @@ class SocialPost extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(12),
                   child: RichText(
-                      text: TextSpan(text: postData["Body"], style: Theme.of(context).textTheme.bodyText1)
+                      text: TextSpan(text: postData.body, style: Theme.of(context).textTheme.bodyText1)
                   ),
                 ),
                 Container(
@@ -125,20 +143,14 @@ class SocialPost extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Spacer(flex: 2,),
-                      FeedPostFooterButton(FontAwesomeIcons.comment, postIconSize, postData["CommentCount"].toString()),
+                      FeedPostFooterButton(FontAwesomeIcons.comment, postIconSize, (postData.comments??0).toString()),
                       Spacer(),
-                      FeedPostFooterButton(FontAwesomeIcons.heart, postIconSize, postData["LikeCount"].toString()),
+                      FeedPostFooterButton(FontAwesomeIcons.heart, postIconSize, (postData.likes??0).toString()),
                       Spacer(),
-                      FeedPostFooterButton(FontAwesomeIcons.gem, postIconSize, postData["DiamondCount"].toString()),
+                      FeedPostFooterButton(FontAwesomeIcons.gem, postIconSize, (postData.diamonds??0).toString()),
                       Spacer(),
-                      FeedPostFooterButton(FontAwesomeIcons.reply, postIconSize, (
-                          (
-                              ((postData["RepostCount"] as int?)??0) + ((postData["QuoteRepostCount"] as int?)??0)
-                          )
-                      ).toString()),
-                      Spacer(flex: 2,),
-                      Text(DateFormat.yMd().add_jms().format(DateTime.now())),
-                      Spacer(flex: 2,),
+                      FeedPostFooterButton(FontAwesomeIcons.reply, postIconSize, ((postData.reclouts??0) + (postData.quotes??0)).toString()),
+                      Spacer(flex: 4,),
                     ],
                   ),
                 ),
@@ -149,6 +161,19 @@ class SocialPost extends StatelessWidget {
         )
       )
     );
+  }
+
+  int nanoStampToMillis(String? stamp) {
+    if (stamp != null) {
+      String tempStamp = stamp.substring(0, stamp.length - 6);
+      if (tempStamp.length > 0) {
+        int? stampValue = int.tryParse(tempStamp);
+        if (stampValue != null) {
+          return stampValue;
+        } else return 0;
+
+      } else return 0;
+    } else return 0;
   }
 }
 

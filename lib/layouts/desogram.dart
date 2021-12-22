@@ -23,7 +23,6 @@ class DesoGramLayout extends StatelessWidget {
                 children: [
                   Spacer(),
                   SizedBox(child: Center(child: BrandLogo()), height: 2.5 * refSize, width: 2.5 * refSize),
-                  Text("Carbon", style: Theme.of(context).appBarTheme.titleTextStyle,),
                   // SearchBar(),
                   // IconButton(onPressed: null, icon: Icon(Icons.home_outlined)),
                   // IconButton(onPressed: null, icon: Icon(Icons.message_outlined)),

@@ -107,12 +107,12 @@ class SocialPost extends StatelessWidget {
                         children: [
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 12),
-                            child: Text("" + coinPrice.toStringAsFixed(2) + " / CC",
+                            child: Text("CC " + coinPrice.toStringAsFixed(2),
                                 style: Theme.of(context).textTheme.button),
                           ),
                           Container(
                               padding: EdgeInsets.symmetric(horizontal: 12),
-                              child: Text("" + desoLocked.toStringAsFixed(2) + " staked")
+                              child: Text("staked " + desoLocked.toStringAsFixed(2))
                           ),
                         ],
                       ),

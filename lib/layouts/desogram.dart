@@ -5,7 +5,19 @@ import 'package:carbon/layouts/parts/posts_feed.dart';
 import 'package:carbon/layouts/parts/search_bar.dart';
 import 'package:flutter/material.dart';
 
-class DesoGramLayout extends StatelessWidget {
+class DesoGramLayout extends StatefulWidget {
+
+  final String l4sFeed = "128b4a0b-4431-4e14-a6b5-3b000e40e0e7";
+
+  @override
+  State<DesoGramLayout> createState() => _DesoGramLayoutState(l4sFeed);
+}
+
+class _DesoGramLayoutState extends State<DesoGramLayout> {
+  String currentFeedId;
+
+  _DesoGramLayoutState(this.currentFeedId): super();
+
   @override
   Widget build(BuildContext context) {
     App? app = App.of(context);
@@ -19,22 +31,41 @@ class DesoGramLayout extends StatelessWidget {
               primary: true,
               floating: true,
               pinned: true,
-              flexibleSpace: Row(
-                children: [
-                  Spacer(),
-                  SizedBox(child: Center(child: BrandLogo()), height: 2.5 * refSize, width: 2.5 * refSize),
-                  // SearchBar(),
-                  // IconButton(onPressed: null, icon: Icon(Icons.home_outlined)),
-                  // IconButton(onPressed: null, icon: Icon(Icons.message_outlined)),
-                  // IconButton(onPressed: null, icon: Icon(Icons.add_circle_outline)),
-                  // IconButton(onPressed: null, icon: Icon(Icons.explore_outlined)),
-                  // IconButton(onPressed: null, icon: Icon(Icons.notifications_outlined)),
-                  // IconButton(onPressed: null, icon: Icon(Icons.person_outline_rounded)),
-                  Spacer()
-                ],
-              ),
+              leading: SizedBox(child: Center(child: BrandLogo()), height: 2.5 * refSize, width: 2.5 * refSize),
+              title: Text("Carbon", style: TextStyle(fontFamily: 'SourceCodePro'),),
+              actions: [
+                TextButton(onPressed: () {
+                  setState(() {
+                    this.currentFeedId = this.widget.l4sFeed;
+                  });
+                },
+                  child: Row(children: [
+                    Image.asset("assets/images/l4s_short_nobg.png", fit: BoxFit.fitHeight),
+                    // Padding(
+                    //     padding: EdgeInsets.only(left: 4),
+                    //     child: Text("Love4src", style: Theme.of(context).textTheme.button)
+                    // ),
+                  ],),
+                ),
+                TextButton(onPressed: () {
+                  setState(() {
+                    this.currentFeedId = "92503bf4-b1f1-452d-bb0f-5f5f5369ba79";
+                  });
+                },
+                  child: Row(children: [
+                    Image.asset("assets/images/tunel_short_nobg.png", fit: BoxFit.fitHeight),
+                    // Padding(
+                    //     padding: EdgeInsets.only(left: 4),
+                    //     child: Text("Love4src", style: Theme.of(context).textTheme.button)
+                    // ),
+                  ],),
+                ),
+              ],
             ),
-            PostsFeed()
+            PostsFeed(
+              key: Key(this.currentFeedId),
+              feedId: this.currentFeedId
+            )
           ],
         )
     );

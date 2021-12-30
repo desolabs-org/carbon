@@ -36,7 +36,7 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
               actions: [
                 TextButton(onPressed: () {
                   setState(() {
-                    this.currentFeedId = "128b4a0b-4431-4e14-a6b5-3b000e40e0e7";
+                    this.widget.feedId = "128b4a0b-4431-4e14-a6b5-3b000e40e0e7";
                   });
                 },
                   child: Row(children: [
@@ -49,7 +49,7 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
                 ),
                 TextButton(onPressed: () {
                   setState(() {
-                    this.currentFeedId = "92503bf4-b1f1-452d-bb0f-5f5f5369ba79";
+                    this.widget.feedId = "92503bf4-b1f1-452d-bb0f-5f5f5369ba79";
                   });
                 },
                   child: Row(children: [

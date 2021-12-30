@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 
 class DesoGramLayout extends StatefulWidget {
 
-  final String l4sFeed = "128b4a0b-4431-4e14-a6b5-3b000e40e0e7";
+  String feedId = "128b4a0b-4431-4e14-a6b5-3b000e40e0e7";
 
   @override
-  State<DesoGramLayout> createState() => _DesoGramLayoutState(l4sFeed);
+  State<DesoGramLayout> createState() => _DesoGramLayoutState(feedId);
 }
 
 class _DesoGramLayoutState extends State<DesoGramLayout> {
@@ -36,7 +36,7 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
               actions: [
                 TextButton(onPressed: () {
                   setState(() {
-                    this.currentFeedId = this.widget.l4sFeed;
+                    this.currentFeedId = "128b4a0b-4431-4e14-a6b5-3b000e40e0e7";
                   });
                 },
                   child: Row(children: [

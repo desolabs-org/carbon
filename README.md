@@ -7,6 +7,7 @@ This is app can be used as a template for building out social apps on top of the
 License for use:
 [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
 
-## Code generators
+## Tips and tricks
 
 > Build JSON model `flutter pub run build_runner build`
+> [SO post on how to disable chrome cors for devs](https://stackoverflow.com/a/66879350)

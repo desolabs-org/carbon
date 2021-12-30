@@ -97,11 +97,15 @@ class SocialPost extends StatelessWidget {
                               ],
                             ),
                           ),
-                          if (imageSrc != null) CachedNetworkImage(
-                            imageUrl: imageSrc,
-                            placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
-                            fit: BoxFit.fitWidth,
+                          if (imageSrc != null) Container(
+                            child: Center(
+                              child: CachedNetworkImage(
+                                imageUrl: imageSrc,
+                                placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                                errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
+                                fit: BoxFit.fitWidth,
+                              ),
+                            )
                           ),
                           Container(
                             padding: EdgeInsets.all(12),

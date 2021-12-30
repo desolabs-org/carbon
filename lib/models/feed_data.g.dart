@@ -22,7 +22,7 @@ Map<String, dynamic> _$FeedDataToJson(FeedData instance) => <String, dynamic>{
 
 PostData _$PostDataFromJson(Map<String, dynamic> json) => PostData(
       id: (json['id'] as List<dynamic>?)?.map((e) => e as int).toList(),
-      author: (json['author'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      author: json['author'] as String?,
       mentions: (json['mentions'] as List<dynamic>?)
           ?.map((e) => RelatedData.fromJson(e as Map<String, dynamic>))
           .toList(),

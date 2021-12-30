@@ -6,7 +6,6 @@ class BrightTheme {
   static ThemeData data = ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.white,
-    fontFamily: 'SourceCodePro',
     textTheme: TextTheme(
           bodyText1: TextStyle(fontSize: 15, height: 1.4, fontWeight: FontWeight.w400)
         ),

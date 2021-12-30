@@ -82,44 +82,56 @@ class SocialPost extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       // Text(utf8.decode((postData.author??[]).map((e) => (e + 127)).toList(), allowMalformed: true)),
-                      // Image.network(
-                      //     "https://love4src.com/api/v0/get-single-profile-picture/BC1YL" + Base58Encode((postData.author??[]).map((e) => e + 128).toList()) + "?fallback=https://love4src.com/assets/img/default_profile_pic.png",
-                      // height: postIconSize, width: postIconSize,),
+                      CachedNetworkImage(
+                        imageUrl: "https://love4src.com/api/v0/get-single-profile-picture/" + (postData.author??"") + "?fallback=https://love4src.com/assets/img/default_profile_pic.png",
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                        errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
+                        fit: BoxFit.fitHeight,
+                        height: postIconSize,
+
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                               padding: EdgeInsets.symmetric(horizontal: 12),
-                              child: Text(postData.accountData?.nick??Base58Encode((postData.author??[]).map((e) => e + 128).toList()).substring(0, 32),
-                                  style: TextStyle(fontWeight: FontWeight.bold))
+                              child: Text(postData.accountData?.nick??(postData.author??"").substring(0, 32),
+                                  style: TextStyle(fontWeight: FontWeight.bold,
+                                    fontFamily: 'SourceCodePro'))
                           ),
                           Container(
                               padding: EdgeInsets.symmetric(horizontal: 12),
-                              child: Text(DateFormat.yMd().add_jms().format(DateTime.fromMillisecondsSinceEpoch(nanoStampToMillis(postData.timestamp), isUtc: true))),
+                              child: Text(DateFormat.jms().format(DateTime.fromMillisecondsSinceEpoch(nanoStampToMillis(postData.timestamp), isUtc: true))),
                           ),
                         ],
                       ),
                       Spacer(),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 12),
-                            child: Text("CC " + coinPrice.toStringAsFixed(2),
-                                style: Theme.of(context).textTheme.button),
+                      TextButton(onPressed: () {},
+                        child: Row(children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 8),
+                                child: Text("CC " + coinPrice.toStringAsFixed(2),
+                                    style: Theme.of(context).textTheme.button),
+                              ),
+                              Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 8),
+                                  child: Text("staked " + desoLocked.toStringAsFixed(2),
+                                      style: Theme.of(context).textTheme.button
+                                  )
+                              ),
+                            ],
                           ),
-                          Container(
-                              padding: EdgeInsets.symmetric(horizontal: 12),
-                              child: Text("staked " + desoLocked.toStringAsFixed(2))
-                          ),
-                        ],
-                      ),
-                      IconButton(onPressed: () {}, icon: Icon(Icons.auto_awesome_outlined, 
-                          color: (Theme.of(context).textTheme.caption?.color??Colors.black38),
-                          size: postIconSize / 2
-                      ))
+                          Icon(Icons.auto_awesome_outlined,
+                              color: (Theme.of(context).textTheme.caption?.color??Colors.black38),
+                              size: postIconSize / 2
+                          )
+                        ],),
+                      )
                     ],
                   ),
                 ),

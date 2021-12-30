@@ -19,7 +19,7 @@ class FeedData {
 class PostData {
 
   final List<int>? id;
-  final List<int>? author;
+  final String? author;
   final List<RelatedData>? mentions;
   final List<String>? langs;
   final int? rating;

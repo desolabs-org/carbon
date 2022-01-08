@@ -67,7 +67,8 @@ class DesoNodeManager extends ChangeNotifier {
       final response = await client.get(
           Uri.https(_ninjaEndpoint, '/api/1/feed/' + feedId),
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Origin": "https://carbon.love4src.com"
           });
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonData = (jsonDecode(response.body) as Map<String, dynamic>);
@@ -90,7 +91,8 @@ class DesoNodeManager extends ChangeNotifier {
       final response = await client.post(
           Uri.https(_apiEndpoint, 'api/v0/get-posts-stateless'),
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Origin": "https://carbon.love4src.com"
           },
           body: jsonEncode(
           {

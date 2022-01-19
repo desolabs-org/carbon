@@ -56,7 +56,7 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
                     this.currentFeedId = this.widget.feedId;
                   });
                 },
-                  child: FittedBox(child: Flag.fromCode(FlagsCode.ES, fit: BoxFit.fitHeight,)),
+                  child: Container(padding: EdgeInsets.symmetric(vertical: refSize/2), child: FittedBox(child: Flag.fromCode(FlagsCode.ES, fit: BoxFit.fitHeight,))),
                 ),
                 TextButton(onPressed: () {
                   setState(() {
@@ -64,7 +64,7 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
                     this.currentFeedId = this.widget.feedId;
                   });
                 },
-                  child: FittedBox(child: Flag.fromCode(FlagsCode.FR, fit: BoxFit.fitHeight,)),
+                  child: Container(padding: EdgeInsets.symmetric(vertical: refSize/2), child: FittedBox(child: Flag.fromCode(FlagsCode.FR, fit: BoxFit.fitHeight,))),
                 ),
                 TextButton(onPressed: () {
                   setState(() {
@@ -72,15 +72,7 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
                     this.currentFeedId = this.widget.feedId;
                   });
                 },
-                  child: FittedBox(child: Flag.fromCode(FlagsCode.NL, fit: BoxFit.fitHeight,)),
-                ),
-                TextButton(onPressed: () {
-                  setState(() {
-                    this.widget.feedId = "cd3199bd-cb3c-42c7-9be3-aa42062c5ad2";
-                    this.currentFeedId = this.widget.feedId;
-                  });
-                },
-                  child: FittedBox(child: Flag.fromCode(FlagsCode.DE, fit: BoxFit.fitHeight,)),
+                  child: Container(padding: EdgeInsets.symmetric(vertical: refSize/2), child: FittedBox(child: Flag.fromCode(FlagsCode.NL, fit: BoxFit.fitHeight,))),
                 ),
                 TextButton(onPressed: () {
                   setState(() {
@@ -88,7 +80,7 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
                     this.currentFeedId = this.widget.feedId;
                   });
                 },
-                  child: FittedBox(child: Flag.fromCode(FlagsCode.RU, fit: BoxFit.fitHeight,)),
+                  child: Container(padding: EdgeInsets.symmetric(vertical: refSize/2), child: FittedBox(child: Flag.fromCode(FlagsCode.RU, fit: BoxFit.fitHeight,))),
                 ),
                 TextButton(onPressed: () {
                   setState(() {
@@ -96,7 +88,7 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
                     this.currentFeedId = this.widget.feedId;
                   });
                 },
-                  child: FittedBox(child: Flag.fromCode(FlagsCode.CN, fit: BoxFit.fitHeight,)),
+                  child: Container(padding: EdgeInsets.symmetric(vertical: refSize/2), child: FittedBox(child: Flag.fromCode(FlagsCode.CN, fit: BoxFit.fitHeight,))),
                 ),
               ],
             ),

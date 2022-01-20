@@ -1,14 +1,13 @@
 import 'package:carbon/app.dart';
+import 'package:carbon/dao/deso_node.dart';
 import 'package:carbon/generated/l10n.dart';
-import 'package:carbon/layouts/desogram.dart';
-import 'package:carbon/layouts/layout_manager.dart';
-import 'package:carbon/models/deso_node_manager.dart';
+import 'package:carbon/layouts/manager.dart';
+import 'package:carbon/dao/deso_ninja.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:carbon/themes/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'layouts/classic_layout.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,16 +27,18 @@ class CarbonApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<ThemeManager>(
               create: (_) => new ThemeManager(sharedPreferences)),
-          ChangeNotifierProvider<DesoNodeManager>(
-              create: (_) => new DesoNodeManager(sharedPreferences)),
+          ChangeNotifierProvider<DesoNinjaDao>(
+              create: (_) => new DesoNinjaDao()),
+          ChangeNotifierProvider<DesoNodeDao>(
+              create: (_) => new DesoNodeDao(sharedPreferences)),
           ChangeNotifierProvider<LayoutManager>(
               create: (_) => new LayoutManager(sharedPreferences)),
         ],
-        child: Consumer3<ThemeManager, DesoNodeManager, LayoutManager>(
-            builder: (context, themeManager, desoNodeData, layoutManager, _) {
+        child: Consumer4<ThemeManager, DesoNinjaDao, DesoNodeDao, LayoutManager>(
+            builder: (context, themeManager, ninjaDao, desoDao, layoutManager, _) {
               return MaterialApp(
                 onGenerateTitle: (BuildContext context) =>
-                  S.of(context).appTitle + " - " + desoNodeData.apiEndpoint,
+                  S.of(context).appTitle + " - " + ninjaDao.endpoint,
                 theme: themeManager.themeData,
                 localizationsDelegates: [
                   S.delegate,
@@ -50,12 +51,10 @@ class CarbonApp extends StatelessWidget {
                   Locale('pl', ''),
                 ],
                 home: App(
-                  data: desoNodeData,
+                  data: ninjaDao,
                   theme: themeManager,
                   layout: layoutManager,
-                  child:
-                  DesoGramLayout(),
-                  //ClassicLayout(),
+                  child: layoutManager.current(),
                 ),
               );
             }

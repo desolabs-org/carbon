@@ -1,3 +1,4 @@
+import 'package:carbon/layouts/default.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -42,6 +43,8 @@ class LayoutManager extends ChangeNotifier {
   void _initialize() {
 
   }
+
+  Widget current() => DefaultLayout();
 
   void _load() {
     kind = LayoutKind.values.elementAt(

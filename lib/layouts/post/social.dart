@@ -1,6 +1,5 @@
-
-import 'package:carbon/layouts/parts/feed_post_footer.dart';
-import 'package:carbon/models/feed_data.dart';
+import 'package:carbon/layouts/post/common/footer.dart';
+import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,7 +21,7 @@ class SocialPost extends StatelessWidget {
     return Container(
         child: Center(
             child: Container(
-                constraints: BoxConstraints(maxWidth: 800),
+                constraints: BoxConstraints(maxWidth:800),
                 child: Card(
                   // key: UniqueKey(),
                     child: Container(

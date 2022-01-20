@@ -1,27 +1,29 @@
 import 'package:carbon/app.dart';
-import 'package:carbon/layouts/layout_manager.dart';
-import 'package:carbon/layouts/parts/brand_logo.dart';
-import 'package:carbon/layouts/parts/posts_feed.dart';
+import 'package:carbon/layouts/manager.dart';
+import 'package:carbon/layouts/feed/one_column.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
 
-class DesoGramLayout extends StatefulWidget {
+class DefaultLayout extends StatefulWidget {
 
   String feedId = "128b4a0b-4431-4e14-a6b5-3b000e40e0e7";
 
   @override
-  State<DesoGramLayout> createState() => _DesoGramLayoutState(feedId);
+  State<DefaultLayout> createState() => _DefaultLayoutState(feedId);
 }
 
-class _DesoGramLayoutState extends State<DesoGramLayout> {
+class _DefaultLayoutState extends State<DefaultLayout> {
   String currentFeedId;
 
-  _DesoGramLayoutState(this.currentFeedId): super();
+  _DefaultLayoutState(this.currentFeedId): super();
 
   @override
   Widget build(BuildContext context) {
     App? app = App.of(context);
     num refSize = (app?.layout?.refSize??LayoutManager.defaultRefSize);
+
+    final title = "Carbon";
+
     return Scaffold(
         primary: true,
         body: CustomScrollView(
@@ -31,8 +33,11 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
               primary: true,
               floating: true,
               pinned: true,
-              leading: SizedBox(child: Center(child: BrandLogo()), height: 2.5 * refSize, width: 2.5 * refSize),
-              title: Text("Carbon", style: TextStyle(fontFamily: 'SourceCodePro'),),
+              leading: TextButton(
+                  child: Image.asset("assets/images/carbon.png", fit: BoxFit.contain),
+                  onPressed: () {}
+              ),
+              title: Text(title),
               actions: [
                 TextButton(onPressed: () {
                   setState(() {
@@ -49,6 +54,30 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
                   });
                 },
                   child: Image.asset("assets/images/astro_small_nobg_whitebg.png", fit: BoxFit.fitHeight),
+                ),
+                TextButton(onPressed: () {
+                  setState(() {
+                    this.widget.feedId = "d85bf9a1-945e-46e9-8d2f-df455c7ab0a9";
+                    this.currentFeedId = this.widget.feedId;
+                  });
+                },
+                  child: Image.asset("assets/images/desologo.png", fit: BoxFit.fitHeight),
+                ),
+                TextButton(onPressed: () {
+                  setState(() {
+                    this.widget.feedId = "d85bf9a1-945e-46e9-8d2f-df455c7ab0a9";
+                    this.currentFeedId = this.widget.feedId;
+                  });
+                },
+                  child: Image.asset("assets/images/deso_voices.png", fit: BoxFit.fitHeight),
+                ),
+                TextButton(onPressed: () {
+                  setState(() {
+                    this.widget.feedId = "7a544c01-96dd-4e03-a07e-8e1eca09e2ee";
+                    this.currentFeedId = this.widget.feedId;
+                  });
+                },
+                  child: Text("NFTs"),
                 ),
                 TextButton(onPressed: () {
                   setState(() {
@@ -92,7 +121,7 @@ class _DesoGramLayoutState extends State<DesoGramLayout> {
                 ),
               ],
             ),
-            PostsFeed(
+            OneColumnFeed(
               key: Key(this.currentFeedId),
               feedId: this.currentFeedId
             )

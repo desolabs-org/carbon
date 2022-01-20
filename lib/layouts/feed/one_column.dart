@@ -1,32 +1,31 @@
-import 'dart:convert';
 import 'dart:math';
 import 'package:carbon/app.dart';
-import 'package:carbon/layouts/parts/social_post.dart';
-import 'package:carbon/models/deso_node_manager.dart';
-import 'package:carbon/models/feed_data.dart';
+import 'package:carbon/layouts/post/social.dart';
+import 'package:carbon/dao/deso_ninja.dart';
+import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
 import 'package:flutter/material.dart';
 
-class PostsFeed extends StatefulWidget {
+class OneColumnFeed extends StatefulWidget {
 
   final String? feedId;
 
-  PostsFeed({Key? key, this.feedId}): super(key: key);
+  OneColumnFeed({Key? key, this.feedId}): super(key: key);
 
   @override
-  State<PostsFeed> createState() => _PostsFeedState(this.feedId);
+  State<OneColumnFeed> createState() => _OneColumnFeedState(this.feedId);
 }
 
-class _PostsFeedState extends State<PostsFeed> {
+class _OneColumnFeedState extends State<OneColumnFeed> {
   final String? feedId;
 
   ScrollController _scrollController = new ScrollController();
 
-  _PostsFeedState(this.feedId): super();
+  _OneColumnFeedState(this.feedId): super();
 
   @override
   Widget build(BuildContext context) {
     App? app = App.of(context);
-    DesoNodeManager? _desoNodeData = app?.data;
+    DesoNinjaDao? _desoNodeData = app?.data;
 
     double screenWidth = MediaQuery.of(context).size.width;
     double preferredColumnWidth = (Theme.of(context).textTheme.headline6?.fontSize??12) * 42;
@@ -48,12 +47,12 @@ class _PostsFeedState extends State<PostsFeed> {
                     )
                 );
             } else return SliverToBoxAdapter(child: Container(
-              constraints: BoxConstraints(maxWidth: 800),
+              constraints: BoxConstraints(maxWidth: 600),
               child: Center(child: Text("Loading feed..."),),
               height: 100,
             ));
           } else return SliverToBoxAdapter(child: Container(
-            constraints: BoxConstraints(maxWidth: 800),
+            constraints: BoxConstraints(maxWidth: 600),
             child: Center(child: Text("Loading feed..."),),
             height: 100,
           ));

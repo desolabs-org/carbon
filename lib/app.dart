@@ -1,5 +1,5 @@
-import 'package:carbon/layouts/layout_manager.dart';
-import 'package:carbon/models/deso_node_manager.dart';
+import 'package:carbon/layouts/manager.dart';
+import 'package:carbon/dao/deso_ninja.dart';
 import 'package:carbon/themes/theme_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ class App extends StatefulWidget {
   static App? of(BuildContext context) =>
       context.findAncestorWidgetOfExactType<App>();
 
-  final DesoNodeManager? data;
+  final DesoNinjaDao? data;
   final ThemeManager? theme;
   final LayoutManager? layout;
 

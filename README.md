@@ -9,5 +9,9 @@ License for use:
 
 ## Tips and tricks
 
+### JSON model
 > Build JSON model `flutter pub run build_runner build`
+> Clean JSON model ```flutter packages pub run build_runner build --delete-conflicting-outputs```
+
+### Flutter web issues
 > [SO post on how to disable chrome cors for devs](https://stackoverflow.com/a/66879350)

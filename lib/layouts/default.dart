@@ -1,14 +1,12 @@
-import 'package:carbon/app.dart';
 import 'package:carbon/layouts/app_bar/action_button.dart';
 import 'package:carbon/layouts/app_bar/flag_button.dart';
-import 'package:carbon/layouts/manager.dart';
 import 'package:carbon/layouts/feed/one_column.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
 
 class DefaultLayout extends StatefulWidget {
 
-  String feedId = "128b4a0b-4431-4e14-a6b5-3b000e40e0e7";
+  final String feedId = "128b4a0b-4431-4e14-a6b5-3b000e40e0e7";
 
   @override
   State<DefaultLayout> createState() => _DefaultLayoutState(feedId);
@@ -21,16 +19,12 @@ class _DefaultLayoutState extends State<DefaultLayout> {
 
   void changeFeed(String feedId) {
     setState(() {
-      this.widget.feedId = feedId;
-      this.currentFeedId = this.widget.feedId;
+      this.currentFeedId = feedId;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    App? app = App.of(context);
-    num refSize = (app?.layout?.refSize??LayoutManager.defaultRefSize);
-
     return Scaffold(
         primary: true,
         body: CustomScrollView(

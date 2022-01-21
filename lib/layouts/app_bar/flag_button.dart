@@ -1,3 +1,4 @@
+import 'package:carbon/layouts/manager.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class FlagButton extends StatelessWidget {
   Widget build(BuildContext context) =>
       TextButton(onPressed: () => this.onPressed(),
         child: Container(
-            padding: EdgeInsets.symmetric(vertical: 12),
+            padding: EdgeInsets.symmetric(vertical: LayoutManager.refHeight.toDouble()),
             child: FittedBox(
                 child: Flag.fromCode(this.flagCode, fit: BoxFit.fitHeight)
             )

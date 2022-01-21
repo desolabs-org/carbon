@@ -34,11 +34,11 @@ class CarbonApp extends StatelessWidget {
           ChangeNotifierProvider<LayoutManager>(
               create: (_) => new LayoutManager(sharedPreferences)),
         ],
-        child: Consumer4<ThemeManager, DesoNinjaDao, DesoNodeDao, LayoutManager>(
-            builder: (context, themeManager, ninjaDao, desoDao, layoutManager, _) {
+        child: Consumer2<ThemeManager, LayoutManager>(
+            builder: (context, themeManager, layoutManager, _) {
               return MaterialApp(
                 onGenerateTitle: (BuildContext context) =>
-                  S.of(context).appTitle + " - " + ninjaDao.endpoint,
+                  S.of(context).appTitle,
                 theme: themeManager.themeData,
                 localizationsDelegates: [
                   S.delegate,
@@ -50,12 +50,7 @@ class CarbonApp extends StatelessWidget {
                   Locale('en', ''),
                   Locale('pl', ''),
                 ],
-                home: App(
-                  data: ninjaDao,
-                  theme: themeManager,
-                  layout: layoutManager,
-                  child: layoutManager.current(),
-                ),
+                home: App(theme: themeManager, layout: layoutManager),
               );
             }
         ),

@@ -1,4 +1,4 @@
-import 'package:carbon/layouts/post/common/footer.dart';
+import 'package:carbon/layouts/post/common/footer_button.dart';
 import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -120,13 +120,13 @@ class SocialPost extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Spacer(flex: 2,),
-                                FeedPostFooterButton(FontAwesomeIcons.comment, postIconSize, (postData.comments??0).toString()),
+                                PostFooterButton(FontAwesomeIcons.comment, postIconSize, (postData.comments??0).toString()),
                                 Spacer(),
-                                FeedPostFooterButton(FontAwesomeIcons.heart, postIconSize, (postData.likes??0).toString()),
+                                PostFooterButton(FontAwesomeIcons.heart, postIconSize, (postData.likes??0).toString()),
                                 Spacer(),
-                                FeedPostFooterButton(FontAwesomeIcons.gem, postIconSize, (postData.diamonds??0).toString()),
+                                PostFooterButton(FontAwesomeIcons.gem, postIconSize, (postData.diamonds??0).toString()),
                                 Spacer(),
-                                FeedPostFooterButton(FontAwesomeIcons.reply, postIconSize, ((postData.reclouts??0) + (postData.quotes??0)).toString()),
+                                PostFooterButton(FontAwesomeIcons.reply, postIconSize, ((postData.reclouts??0) + (postData.quotes??0)).toString()),
                                 Spacer(flex: 4,),
                               ],
                             ),

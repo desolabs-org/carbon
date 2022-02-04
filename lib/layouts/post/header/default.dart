@@ -16,6 +16,7 @@ class DefaultHeader extends StatelessWidget {
     final iconSize = 3 * LayoutManager.refHeight.toDouble();
     double desoLocked = (postData.accountData?.coin?.locked??0) / 1E9;
     double coinPrice = (postData.accountData?.price??0) / 1E9;
+    final postStamp = DateTime.fromMillisecondsSinceEpoch(nanoStampToMillis(postData.timestamp), isUtc: true);
     return Container(
       padding: EdgeInsets.all(12),
       child: Row(
@@ -47,7 +48,9 @@ class DefaultHeader extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 12),
                 child: Text(
-                  DateFormat.jms().format(DateTime.fromMillisecondsSinceEpoch(nanoStampToMillis(postData.timestamp), isUtc: true)),
+                  DateFormat.jms().format(postStamp) + (
+                      (postStamp.day != DateTime.now().day)? (", " + DateFormat.yMEd().format(postStamp)) : ""
+                  ),
                   style: Theme.of(context).textTheme.caption,
                 ),
               ),

@@ -1,8 +1,8 @@
 import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
-import 'package:carbon/layouts/post/body/default_image.dart';
-import 'package:carbon/layouts/post/body/default_text.dart';
-import 'package:carbon/layouts/post/footer/default.dart';
-import 'package:carbon/layouts/post/header/default.dart';
+import 'package:carbon/components/post/body/default_image.dart';
+import 'package:carbon/components/post/body/default_text.dart';
+import 'package:carbon/components/post/footer/default.dart';
+import 'package:carbon/components/post/header/default.dart';
 import 'package:flutter/material.dart';
 
 class SocialPost extends StatelessWidget {

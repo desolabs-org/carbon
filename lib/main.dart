@@ -1,59 +1,44 @@
-import 'package:carbon/app.dart';
-import 'package:carbon/dao/deso_node.dart';
 import 'package:carbon/generated/l10n.dart';
-import 'package:carbon/layouts/manager.dart';
-import 'package:carbon/dao/deso_ninja.dart';
+import 'package:carbon/layouts/layout_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:carbon/themes/theme_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  runApp(CarbonApp(prefs));
+  runApp(
+      ProviderScope(
+          child: CarbonApp()
+      )
+  );
 }
 
-class CarbonApp extends StatelessWidget {
-  final SharedPreferences sharedPreferences;
+final themeProvider = StateNotifierProvider<ThemeManager, ThemeData>((_) => new ThemeManager());
+final layoutProvider = StateNotifierProvider<LayoutManager, Widget>((_) => new LayoutManager());
 
-  CarbonApp(this.sharedPreferences): super();
+class CarbonApp extends ConsumerWidget {
+
+  static CarbonApp? of(BuildContext context) =>
+      context.findAncestorWidgetOfExactType<CarbonApp>();
 
   @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider<ThemeManager>(
-              create: (_) => new ThemeManager(sharedPreferences)),
-          ChangeNotifierProvider<DesoNinjaDao>(
-              create: (_) => new DesoNinjaDao()),
-          ChangeNotifierProvider<DesoNodeDao>(
-              create: (_) => new DesoNodeDao(sharedPreferences)),
-          ChangeNotifierProvider<LayoutManager>(
-              create: (_) => new LayoutManager(sharedPreferences)),
-        ],
-        child: Consumer2<ThemeManager, LayoutManager>(
-            builder: (context, themeManager, layoutManager, _) {
-              return MaterialApp(
-                onGenerateTitle: (BuildContext context) =>
-                  S.of(context).appTitle,
-                theme: themeManager.themeData,
-                localizationsDelegates: [
-                  S.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: [
-                  Locale('en', ''),
-                  Locale('pl', ''),
-                ],
-                home: App(theme: themeManager, layout: layoutManager),
-              );
-            }
-        ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+      onGenerateTitle: (BuildContext context) => S.of(context).appTitle,
+      theme: ref.watch(themeProvider),
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', ''),
+        Locale('pl', ''),
+      ],
+      home: ref.watch(layoutProvider),
     );
   }
 }

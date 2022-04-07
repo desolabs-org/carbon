@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
-import 'package:carbon/layouts/manager.dart';
+import 'package:carbon/layouts/layout_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

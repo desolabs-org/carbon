@@ -1,21 +1,12 @@
+import 'package:carbon/themes/text/default_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class BrightTheme {
 
   static ThemeData data = ThemeData(
     brightness: Brightness.light,
-    primaryColor: Colors.white,
-    textTheme: TextTheme(
-          bodyText1: TextStyle(fontSize: 15, height: 1.4, fontWeight: FontWeight.w400)
-        ),
-    appBarTheme: AppBarTheme(
-      backgroundColor: Colors.white,
-      titleTextStyle: TextStyle(
-          color: Colors.black87,
-          fontStyle: FontStyle.italic,
-          fontWeight: FontWeight.bold, fontSize: 24,
-      )
-    )
+    textTheme: DefaultTextTheme.data,
+    appBarTheme: AppBarTheme()
   );
 
 }

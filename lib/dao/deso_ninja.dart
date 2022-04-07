@@ -3,14 +3,14 @@ import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class DesoNinjaDao extends ChangeNotifier {
+class DesoNinjaDao {
 
   static final String _defaultNinjaEndpoint = "deso.ninja";
 
-  String _ninjaEndpoint = _defaultNinjaEndpoint;
-  String get endpoint => _ninjaEndpoint;
+  static String _ninjaEndpoint = _defaultNinjaEndpoint;
+  static String get endpoint => _ninjaEndpoint;
 
-  Future<FeedData> getFeedData(String feedId) async {
+  static Future<FeedData> getFeedData(String feedId) async {
     final client = new http.Client();
     FeedData? responseData;
     try {

@@ -36,7 +36,7 @@ class _DefaultLayoutState extends State<DefaultLayout> {
               floating: true,
               pinned: true,
               leading: TextButton(
-                  child: Image.asset("assets/images/carbon.png", fit: BoxFit.contain),
+                  child: Image.asset("assets/images/carbon.png", fit: BoxFit.fitHeight),
                   onPressed: () {}
               ),
               actions: [

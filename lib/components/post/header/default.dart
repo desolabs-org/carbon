@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
-import 'package:carbon/layouts/layout_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -13,7 +12,7 @@ class DefaultHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = 3 * LayoutManager.refHeight.toDouble();
+    final double iconSize = 3 * 14;
     double desoLocked = (postData.accountData?.coin?.locked??0) / 1E9;
     double coinPrice = (postData.accountData?.price??0) / 1E9;
     final postStamp = DateTime.fromMillisecondsSinceEpoch(nanoStampToMillis(postData.timestamp), isUtc: true);

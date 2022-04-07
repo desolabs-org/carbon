@@ -1,5 +1,4 @@
 import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
-import 'package:carbon/layouts/layout_manager.dart';
 import 'package:carbon/components/post/footer/button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,9 +11,9 @@ class DefaultFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = 3 * LayoutManager.refHeight.toDouble();
+    final double iconSize = 3 * 14;
     return Container(
-      padding: EdgeInsets.all(LayoutManager.paddingLarge),
+      padding: EdgeInsets.all(4),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,

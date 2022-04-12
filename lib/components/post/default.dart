@@ -1,4 +1,4 @@
-import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
+import 'package:carbon/dao/models/deso_ninja/post_data.dart';
 import 'package:carbon/components/post/body/default_image.dart';
 import 'package:carbon/components/post/body/default_text.dart';
 import 'package:carbon/components/post/footer/default.dart';

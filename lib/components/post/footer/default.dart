@@ -1,4 +1,4 @@
-import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
+import 'package:carbon/dao/models/deso_ninja/post_data.dart';
 import 'package:carbon/components/post/footer/button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

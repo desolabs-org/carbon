@@ -6,7 +6,7 @@ part 'profile_data.g.dart';
 
 @JsonSerializable()
 class ProfileData {
-  final String? desoPKey;
+  final List<int>? desoPKey;
   final String? desoHandle;
   final String? description;
   final bool? hidden;

@@ -7,7 +7,8 @@ part of 'profile_data.dart';
 // **************************************************************************
 
 ProfileData _$ProfileDataFromJson(Map<String, dynamic> json) => ProfileData(
-      desoPKey: json['desoPKey'] as String?,
+      desoPKey:
+          (json['desoPKey'] as List<dynamic>?)?.map((e) => e as int).toList(),
       desoHandle: json['desoHandle'] as String?,
       description: json['description'] as String?,
       hidden: json['hidden'] as bool?,

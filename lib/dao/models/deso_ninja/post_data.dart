@@ -8,7 +8,7 @@ part 'post_data.g.dart';
 class PostData {
 
   final List<int>? id;
-  final String? author;
+  final List<int>? author;
   final List<RelatedData>? mentions;
   final List<String>? langs;
   final int? rating;

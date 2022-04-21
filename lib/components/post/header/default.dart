@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carbon/dao/models/deso_ninja/post_data.dart';
+import 'package:carbon/util/base58.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -21,13 +22,12 @@ class DefaultHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Text(utf8.decode((postData.author??[]).map((e) => (e + 127)).toList(), allowMalformed: true)),
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(4))
             ),
             child: CachedNetworkImage(
-              imageUrl: "https://love4src.com/api/v0/get-single-profile-picture/" + (postData.author??"") + "?fallback=https://love4src.com/assets/img/default_profile_pic.png",
+              imageUrl: "https://love4src.com/api/v0/get-single-profile-picture/" + Base58ToString(postData.author) + "?fallback=https://love4src.com/assets/img/default_profile_pic.png",
               placeholder: (context, url) => Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
               fit: BoxFit.fitHeight,
@@ -40,7 +40,7 @@ class DefaultHeader extends StatelessWidget {
             children: [
               Container(
                   padding: EdgeInsets.symmetric(horizontal: 12),
-                  child: Text(postData.profile?.desoHandle??(postData.author??"").substring(0, 32),
+                  child: Text(postData.profile?.desoHandle??(Base58ToString(postData.author)).substring(0, 32),
                       style: TextStyle(fontWeight: FontWeight.bold,
                           fontFamily: 'SourceCodePro'))
               ),

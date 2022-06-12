@@ -1,4 +1,3 @@
-import 'package:carbon/dao/models/deso_ninja/profile_data.dart';
 import 'package:carbon/dao/models/deso_ninja/related_data.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -8,32 +7,32 @@ part 'post_data.g.dart';
 class PostData {
 
   final List<int>? id;
-  final List<int>? author;
-  final List<RelatedData>? mentions;
-  final List<String>? langs;
-  final int? rating;
-  final int? comments;
-  final int? likes;
-  final int? diamonds;
-  final int? reclouts;
-  final int? quotes;
-  final String? body;
-  final List<String>? images;
-  final List<String>? videos;
-  final List<int>? parentId;
-  final List<PostData>? quoting;
-  final ProfileData? profile;
-  final String? timestamp;
-  final bool? pinned;
-  final bool? mempool;
-  final bool? hidden;
-  final String? nodeId;
+  final List<int>? by;
+  final List<RelatedData>? r;
+
+  final String? bdy;
+  final List<String>? img;
+  final List<String>? vid;
+  final List<int>? pid;
+  final List<int>? qid;
+
+  final bool? h;
   final bool? nft;
 
-  PostData({this.id, this.author, this.mentions, this.langs, this.rating,
-    this.comments, this.likes, this.diamonds, this.reclouts, this.quotes, this.body,
-    this.images, this.videos, this.parentId, this.quoting, this.profile, this.timestamp,
-    this.pinned, this.mempool, this.hidden, this.nodeId, this.nft
+  final int? tc;
+  final int? tu;
+
+  final int? c;
+  final int? l;
+  final int? d;
+  final int? s;
+  final int? q;
+
+  PostData({this.id, this.by, this.r,
+    this.bdy, this.img, this.vid, this.pid, this.qid,
+    this.h, this.nft,
+    this.tc, this.tu,
+    this.c, this.l, this.d, this.s, this.q
   }) : super();
 
   factory PostData.fromJson(Map<String, dynamic> json) => _$PostDataFromJson(json);

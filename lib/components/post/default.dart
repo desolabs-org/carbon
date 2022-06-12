@@ -13,11 +13,11 @@ class SocialPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? imageSrc = postData.images?.first;
+    String? imageSrc = postData.img?.first;
     return Container(
         child: Center(
             child: Container(
-                constraints: BoxConstraints(maxWidth:800),
+                constraints: BoxConstraints(maxWidth: 800),
                 child: Card(
                   // key: UniqueKey(),
                     child: Container(

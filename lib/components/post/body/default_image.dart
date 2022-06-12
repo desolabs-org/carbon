@@ -10,7 +10,7 @@ class DefaultImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String imageSrc = postData.images!.first;
+    String imageSrc = postData.img!.first;
     return Container(
         child: Center(
           child: CachedNetworkImage(
@@ -18,6 +18,7 @@ class DefaultImage extends StatelessWidget {
             placeholder: (context, url) => Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
             fit: BoxFit.fitWidth,
+            width: 800,
           ),
         )
     );

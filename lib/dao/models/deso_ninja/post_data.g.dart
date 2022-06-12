@@ -8,60 +8,42 @@ part of 'post_data.dart';
 
 PostData _$PostDataFromJson(Map<String, dynamic> json) => PostData(
       id: (json['id'] as List<dynamic>?)?.map((e) => e as int).toList(),
-      author: (json['author'] as List<dynamic>?)?.map((e) => e as int).toList(),
-      mentions: (json['mentions'] as List<dynamic>?)
+      by: (json['by'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      r: (json['r'] as List<dynamic>?)
           ?.map((e) => RelatedData.fromJson(e as Map<String, dynamic>))
           .toList(),
-      langs:
-          (json['langs'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      rating: json['rating'] as int?,
-      comments: json['comments'] as int?,
-      likes: json['likes'] as int?,
-      diamonds: json['diamonds'] as int?,
-      reclouts: json['reclouts'] as int?,
-      quotes: json['quotes'] as int?,
-      body: json['body'] as String?,
-      images:
-          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      videos:
-          (json['videos'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      parentId:
-          (json['parentId'] as List<dynamic>?)?.map((e) => e as int).toList(),
-      quoting: (json['quoting'] as List<dynamic>?)
-          ?.map((e) => PostData.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      profile: json['profile'] == null
-          ? null
-          : ProfileData.fromJson(json['profile'] as Map<String, dynamic>),
-      timestamp: json['timestamp'] as String?,
-      pinned: json['pinned'] as bool?,
-      mempool: json['mempool'] as bool?,
-      hidden: json['hidden'] as bool?,
-      nodeId: json['nodeId'] as String?,
+      bdy: json['bdy'] as String?,
+      img: (json['img'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      vid: (json['vid'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      pid: (json['pid'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      qid: (json['qid'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      h: json['h'] as bool?,
       nft: json['nft'] as bool?,
+      tc: json['tc'] as int?,
+      tu: json['tu'] as int?,
+      c: json['c'] as int?,
+      l: json['l'] as int?,
+      d: json['d'] as int?,
+      s: json['s'] as int?,
+      q: json['q'] as int?,
     );
 
 Map<String, dynamic> _$PostDataToJson(PostData instance) => <String, dynamic>{
       'id': instance.id,
-      'author': instance.author,
-      'mentions': instance.mentions,
-      'langs': instance.langs,
-      'rating': instance.rating,
-      'comments': instance.comments,
-      'likes': instance.likes,
-      'diamonds': instance.diamonds,
-      'reclouts': instance.reclouts,
-      'quotes': instance.quotes,
-      'body': instance.body,
-      'images': instance.images,
-      'videos': instance.videos,
-      'parentId': instance.parentId,
-      'quoting': instance.quoting,
-      'profile': instance.profile,
-      'timestamp': instance.timestamp,
-      'pinned': instance.pinned,
-      'mempool': instance.mempool,
-      'hidden': instance.hidden,
-      'nodeId': instance.nodeId,
+      'by': instance.by,
+      'r': instance.r,
+      'bdy': instance.bdy,
+      'img': instance.img,
+      'vid': instance.vid,
+      'pid': instance.pid,
+      'qid': instance.qid,
+      'h': instance.h,
       'nft': instance.nft,
+      'tc': instance.tc,
+      'tu': instance.tu,
+      'c': instance.c,
+      'l': instance.l,
+      'd': instance.d,
+      's': instance.s,
+      'q': instance.q,
     };

@@ -12,12 +12,13 @@ class DefaultImage extends StatelessWidget {
   Widget build(BuildContext context) {
     String imageSrc = postData.img!.first;
     return Container(
+        constraints: BoxConstraints(maxHeight: 400),
         child: Center(
           child: CachedNetworkImage(
             imageUrl: imageSrc,
             placeholder: (context, url) => Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.contain,
             width: 800,
           ),
         )

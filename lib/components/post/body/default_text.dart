@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carbon/dao/models/deso_ninja/post_data.dart';
 import 'package:carbon/util/base58.dart';
+import 'package:carbon/util/textUtf8.dart';
 import 'package:flutter/material.dart';
 
 class DefaultText extends StatelessWidget {
@@ -34,7 +35,7 @@ class DefaultText extends StatelessWidget {
             Flexible(
               child: RichText(
                   softWrap: true,
-                  text: TextSpan(text: postData.bdy, style: Theme.of(context).textTheme.bodyText1)
+                  text: TextSpan(text: utf8convert(postData.bdy??""), style: Theme.of(context).textTheme.bodyText1)
               ),
             )
           ],

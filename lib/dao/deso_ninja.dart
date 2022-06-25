@@ -15,7 +15,7 @@ class DesoNinjaDao {
     FeedData? responseData;
     try {
       final response = await client.get(
-          Uri.https(_ninjaEndpoint, '/api/1/feed/' + feedId),
+          Uri.https(_ninjaEndpoint, '/api/1/feed/posts/' + feedId),
           headers: {
             "Content-Type": "application/json"
           });

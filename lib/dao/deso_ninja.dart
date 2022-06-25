@@ -20,7 +20,7 @@ class DesoNinjaDao {
             "Content-Type": "application/json"
           });
       if (response.statusCode == 200) {
-        Map<String, dynamic> jsonData = (jsonDecode(response.body) as Map<String, dynamic>);
+        Map<String, dynamic> jsonData = (jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>);
         responseData = FeedData.fromJson(jsonData);
       }
     } catch(e, stackTrace) {

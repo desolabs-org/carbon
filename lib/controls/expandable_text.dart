@@ -37,8 +37,9 @@ class ExpandableTextState extends State<ExpandableText> with TickerProviderState
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         final cleanContent = widget.content.trim();
+        final textStyle = Theme.of(context).textTheme.bodyText1;
         TextPainter textPainter = TextPainter(
-          text: TextSpan(text: cleanContent),
+          text: TextSpan(text: cleanContent, style: textStyle),
           textDirection: TextDirection.ltr,
           maxLines: widget.maxLines
         );
@@ -48,21 +49,21 @@ class ExpandableTextState extends State<ExpandableText> with TickerProviderState
 
         final pos = textPainter.getPositionForOffset(Offset(textSize.width, textSize.height));
 
-        final endIndex = textPainter.getOffsetAfter(pos.offset);
+        final endIndex = textPainter.getOffsetAfter(pos.offset)??cleanContent.characters.length;
 
         final textSpan;
-        if (textPainter.didExceedMaxLines) {
+        if (endIndex < cleanContent.characters.length) {
           textSpan = TextSpan(
             text: isCollapsed
                 ? cleanContent.substring(0, endIndex).trim()
                 : cleanContent,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: textStyle,
             children: <TextSpan>[getLink()],
           );
         } else {
           textSpan = TextSpan(
             text: cleanContent,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: textStyle,
           );
         }
 

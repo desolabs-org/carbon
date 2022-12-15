@@ -6,33 +6,17 @@ part 'post_data.g.dart';
 @JsonSerializable()
 class PostData {
 
-  final List<int>? id;
-  final List<int>? by;
-  final List<RelatedData>? r;
+  final String? id;
+  final String? author;
 
-  final String? bdy;
-  final List<String>? img;
-  final List<String>? vid;
-  final List<int>? pid;
-  final List<int>? qid;
+  final String? body;
+  final List<String>? images;
+  final List<String>? videos;
+  final String? parentId;
+  final String? quotedId;
 
-  final bool? h;
-  final bool? nft;
-
-  final int? tc;
-  final int? tu;
-
-  final int? c;
-  final int? l;
-  final int? d;
-  final int? s;
-  final int? q;
-
-  PostData({this.id, this.by, this.r,
-    this.bdy, this.img, this.vid, this.pid, this.qid,
-    this.h, this.nft,
-    this.tc, this.tu,
-    this.c, this.l, this.d, this.s, this.q
+  PostData({this.id, this.author,
+    this.body, this.images, this.videos, this.parentId, this.quotedId
   }) : super();
 
   factory PostData.fromJson(Map<String, dynamic> json) => _$PostDataFromJson(json);

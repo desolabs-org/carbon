@@ -1,9 +1,10 @@
 import 'package:carbon/components/feed/one_column.dart';
+import 'package:carbon/dao/feed_id.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class DefaultScreen extends StatelessWidget {
-  String feedId;
+  FeedId feedId;
 
   DefaultScreen(this.feedId): super();
 
@@ -27,6 +28,7 @@ class DefaultScreen extends StatelessWidget {
               primary: true,
               floating: true,
               pinned: true,
+              backgroundColor: Theme.of(context).backgroundColor,
               leading: TextButton(
                   child: Image.asset("assets/images/carbon.png", fit: BoxFit.fitHeight),
                   onPressed: () => GoRouter.of(context).go('/')
@@ -43,7 +45,7 @@ class DefaultScreen extends StatelessWidget {
               ],
             ),
             OneColumnFeed(
-              key: Key(this.feedId),
+              key: Key(this.feedId.toString()),
               feedId: this.feedId
             )
           ],

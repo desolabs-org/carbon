@@ -51,10 +51,10 @@ class S {
   }
 
   /// `Carbon`
-  String get appTitle {
+  String get app_title {
     return Intl.message(
       'Carbon',
-      name: 'appTitle',
+      name: 'app_title',
       desc: '',
       args: [],
     );
@@ -135,6 +135,26 @@ class S {
     return Intl.message(
       'Account',
       name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read more`
+  String get read_more {
+    return Intl.message(
+      'Read more',
+      name: 'read_more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read less`
+  String get read_less {
+    return Intl.message(
+      'Read less',
+      name: 'read_less',
       desc: '',
       args: [],
     );

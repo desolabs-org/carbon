@@ -1,5 +1,5 @@
 {
-  "appTitle": "Carbon",
+  "app_title": "Carbon",
   "trends": "Trendy",
   "news": "Nowości",
   "events": "Wydarzenia",
@@ -7,5 +7,7 @@
   "profile": "Profil",
   "chats": "Rozmowy",
   "more": "Więcej",
-  "account": "Użytkownik"
+  "account": "Użytkownik",
+  "read_more": "Pokaż więcej",
+  "read_less": "Ukryj tekst"
 }

@@ -10,18 +10,15 @@ class DefaultImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String imageSrc = postData.img!.first;
+    String imageSrc = postData.images!.first;
     return Container(
-        constraints: BoxConstraints(maxHeight: 400),
-        child: Center(
-          child: CachedNetworkImage(
-            imageUrl: imageSrc,
-            placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-            errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
-            fit: BoxFit.contain,
-            width: 800,
-          ),
-        )
+        constraints: BoxConstraints(maxWidth: 600),
+      child: CachedNetworkImage(
+        imageUrl: imageSrc,
+        placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+        errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
+        fit: BoxFit.fill,
+      )
     );
   }
 }

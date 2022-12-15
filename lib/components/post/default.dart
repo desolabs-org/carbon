@@ -1,3 +1,4 @@
+import 'package:carbon/components/post/body/default_video.dart';
 import 'package:carbon/dao/models/deso_ninja/post_data.dart';
 import 'package:carbon/components/post/body/default_image.dart';
 import 'package:carbon/components/post/body/default_text.dart';
@@ -13,29 +14,32 @@ class SocialPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? imageSrc = postData.img?.first;
+    String? imageSrc = postData.images?.first;
+    String? videoSrc = postData.videos?.first;
     return Container(
-        child: Center(
-            child: Container(
-                constraints: BoxConstraints(maxWidth: 800),
-                child: Card(
-                  // key: UniqueKey(),
-                    child: Container(
-                      padding: EdgeInsets.all(4),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          DefaultHeader(postData),
-                          if (imageSrc != null) DefaultImage(postData),
-                          DefaultText(postData),
-                          DefaultFooter(postData)
-                        ],
-                      ),
-                    )
-                )
-            )
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(
+                      color: Theme.of(context).backgroundColor,
+                      width: 4
+                  )
+              )
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              DefaultHeader(postData),
+              DefaultText(postData),
+              if (imageSrc != null) DefaultImage(postData),
+              if (videoSrc != null) DefaultVideo(postData),
+              DefaultFooter(postData)
+            ],
+          ),
         )
+      )
     );
   }
 }

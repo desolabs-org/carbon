@@ -1,0 +1,3 @@
+enum NetworkKind {
+  DeSo, DesoNinja
+}

@@ -13,6 +13,7 @@ class DefaultFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     final double iconSize = 3 * 14;
     return Container(
+      constraints: BoxConstraints(maxWidth: 600),
       padding: EdgeInsets.all(4),
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -20,13 +21,13 @@ class DefaultFooter extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Spacer(flex: 2,),
-          PostFooterButton(FontAwesomeIcons.comment, iconSize, (postData.c??0).toString()),
+          PostFooterButton(FontAwesomeIcons.comment, iconSize, (0).toString()),
           Spacer(),
-          PostFooterButton(FontAwesomeIcons.heart, iconSize, (postData.l??0).toString()),
+          PostFooterButton(FontAwesomeIcons.heart, iconSize, (0).toString()),
           Spacer(),
-          PostFooterButton(FontAwesomeIcons.gem, iconSize, (postData.d??0).toString()),
+          PostFooterButton(FontAwesomeIcons.gem, iconSize, (0).toString()),
           Spacer(),
-          PostFooterButton(FontAwesomeIcons.reply, iconSize, ((postData.s??0) + (postData.q??0)).toString()),
+          PostFooterButton(FontAwesomeIcons.reply, iconSize, (0).toString()),
           Spacer(flex: 4,),
         ],
       ),

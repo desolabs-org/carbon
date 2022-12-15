@@ -1,3 +1,5 @@
+import 'package:carbon/dao/feed_id.dart';
+import 'package:carbon/dao/network_kind.dart';
 import 'package:carbon/generated/l10n.dart';
 import 'package:carbon/screens/default.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -24,19 +26,24 @@ class CarbonApp extends ConsumerWidget {
   static CarbonApp? of(BuildContext context) =>
       context.findAncestorWidgetOfExactType<CarbonApp>();
 
+  static FeedId defaultFeed = FeedId(
+    "b239e037-3faf-4e1d-9d6b-85624ecc7538",
+    NetworkKind.DesoNinja
+  );
+
   final GoRouter _router = GoRouter(
     routes: <GoRoute>[
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) => DefaultScreen(
-          "128b4a0b-4431-4e14-a6b5-3b000e40e0e7"
+          defaultFeed
         ),
       ),
       GoRoute(
         path: '/feeds/:feedId',
         builder: (BuildContext context, GoRouterState state) {
           final String feedId = state.params['feedId']!;
-          return DefaultScreen(feedId);
+          return DefaultScreen(FeedId(feedId, NetworkKind.DesoNinja));
         },
       ),
     ],
@@ -47,7 +54,7 @@ class CarbonApp extends ConsumerWidget {
     return MaterialApp.router(
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,
-      onGenerateTitle: (BuildContext context) => S.of(context).appTitle,
+      onGenerateTitle: (BuildContext context) => S.of(context).app_title,
       theme: ref.watch(themeProvider),
       localizationsDelegates: [
         S.delegate,

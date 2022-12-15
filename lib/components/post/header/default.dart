@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carbon/components/profile/default_pill.dart';
 import 'package:carbon/dao/models/deso_ninja/post_data.dart';
-import 'package:carbon/util/base58.dart';
+import 'package:carbon/dao/network_kind.dart';
+import 'package:carbon/dao/user_id.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class DefaultHeader extends StatelessWidget {
 
@@ -12,13 +12,17 @@ class DefaultHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final postStamp = DateTime.fromMillisecondsSinceEpoch(postData.tc??0, isUtc: true);
+    final userId = UserId(postData.author??"", NetworkKind.DeSo);
     return Container(
-      // padding: EdgeInsets.all(12),
-      // child: Center(
-      //     child: Text(Base58ToString(postData.by),
-      //       style: Theme.of(context).textTheme.caption)
-      // ),
+      constraints: BoxConstraints(maxWidth: 600),
+      padding: EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 0),
+      child: Flex(
+        direction: Axis.horizontal,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          DefaultPill(userId)
+        ],
+      )
     );
   }
 }

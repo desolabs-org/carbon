@@ -6,7 +6,13 @@ class BrightTheme {
   static ThemeData data = ThemeData(
     brightness: Brightness.light,
     textTheme: DefaultTextTheme.data,
-    appBarTheme: AppBarTheme()
+    appBarTheme: AppBarTheme(
+      color: Colors.blueGrey
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: Colors.white60,
+      filled: true
+    )
   );
 
 }

@@ -9,5 +9,10 @@
   "more": "Więcej",
   "account": "Użytkownik",
   "read_more": "Pokaż więcej",
-  "read_less": "Ukryj tekst"
+  "read_less": "Ukryj tekst",
+  "comment": "Skomentuj",
+  "recommend": "Rekomenduj",
+  "reward": "Nagródź",
+  "repost": "Podaj dalej",
+  "search": "Szukaj"
 }

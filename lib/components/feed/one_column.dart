@@ -1,6 +1,6 @@
 import 'package:carbon/components/post/default.dart';
 import 'package:carbon/dao/deso_ninja.dart';
-import 'package:carbon/dao/feed_id.dart';
+import 'package:carbon/dao/models/carbon/feed_id.dart';
 import 'package:carbon/dao/models/deso_ninja/feed_data.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

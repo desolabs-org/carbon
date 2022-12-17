@@ -18,15 +18,7 @@ class SocialPost extends StatelessWidget {
     String? videoSrc = postData.videos?.first;
     return Container(
       child: Center(
-        child: Container(
-          decoration: BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(
-                      color: Theme.of(context).backgroundColor,
-                      width: 4
-                  )
-              )
-          ),
+        child: Card(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,

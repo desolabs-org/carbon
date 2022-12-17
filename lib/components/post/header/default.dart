@@ -1,7 +1,7 @@
 import 'package:carbon/components/profile/default_pill.dart';
 import 'package:carbon/dao/models/deso_ninja/post_data.dart';
 import 'package:carbon/dao/network_kind.dart';
-import 'package:carbon/dao/user_id.dart';
+import 'package:carbon/dao/models/carbon/user_id.dart';
 import 'package:flutter/material.dart';
 
 class DefaultHeader extends StatelessWidget {

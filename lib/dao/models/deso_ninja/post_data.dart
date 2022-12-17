@@ -1,4 +1,3 @@
-import 'package:carbon/dao/models/deso_ninja/related_data.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'post_data.g.dart';

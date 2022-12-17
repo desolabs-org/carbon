@@ -25,13 +25,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "account": MessageLookupByLibrary.simpleMessage("Użytkownik"),
         "app_title": MessageLookupByLibrary.simpleMessage("Carbon"),
         "chats": MessageLookupByLibrary.simpleMessage("Rozmowy"),
+        "comment": MessageLookupByLibrary.simpleMessage("Skomentuj"),
         "events": MessageLookupByLibrary.simpleMessage("Wydarzenia"),
         "more": MessageLookupByLibrary.simpleMessage("Więcej"),
         "news": MessageLookupByLibrary.simpleMessage("Nowości"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
         "read_less": MessageLookupByLibrary.simpleMessage("Ukryj tekst"),
         "read_more": MessageLookupByLibrary.simpleMessage("Pokaż więcej"),
+        "recommend": MessageLookupByLibrary.simpleMessage("Rekomenduj"),
+        "repost": MessageLookupByLibrary.simpleMessage("Podaj dalej"),
+        "reward": MessageLookupByLibrary.simpleMessage("Nagródź"),
         "saved": MessageLookupByLibrary.simpleMessage("Zakładki"),
+        "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
         "trends": MessageLookupByLibrary.simpleMessage("Trendy")
       };
 }

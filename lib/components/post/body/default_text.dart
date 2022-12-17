@@ -12,7 +12,7 @@ class DefaultText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(maxWidth: 600),
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       child: ExpandableText(postData.body??"")
     );
   }

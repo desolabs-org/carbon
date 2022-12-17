@@ -9,5 +9,10 @@
   "more": "More",
   "account": "Account",
   "read_more": "Read more",
-  "read_less": "Read less"
+  "read_less": "Read less",
+  "comment": "Comment",
+  "recommend": "Recommend",
+  "reward": "Reward",
+  "repost": "Repost",
+  "search": "Search"
 }

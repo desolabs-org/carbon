@@ -25,13 +25,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "app_title": MessageLookupByLibrary.simpleMessage("Carbon"),
         "chats": MessageLookupByLibrary.simpleMessage("Chats"),
+        "comment": MessageLookupByLibrary.simpleMessage("Comment"),
         "events": MessageLookupByLibrary.simpleMessage("Events"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "news": MessageLookupByLibrary.simpleMessage("News"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "read_less": MessageLookupByLibrary.simpleMessage("Read less"),
         "read_more": MessageLookupByLibrary.simpleMessage("Read more"),
+        "recommend": MessageLookupByLibrary.simpleMessage("Recommend"),
+        "repost": MessageLookupByLibrary.simpleMessage("Repost"),
+        "reward": MessageLookupByLibrary.simpleMessage("Reward"),
         "saved": MessageLookupByLibrary.simpleMessage("Saved"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "trends": MessageLookupByLibrary.simpleMessage("Trends")
       };
 }

@@ -3,25 +3,28 @@ import 'package:flutter/material.dart';
 class PostFooterButton extends StatelessWidget {
 
   final IconData iconData;
-  final double iconSize;
   final String caption;
 
-  PostFooterButton(this.iconData, this.iconSize, this.caption): super();
+  PostFooterButton(this.iconData, this.caption): super();
 
   @override
-  Widget build(BuildContext context) =>
-    TextButton(onPressed: () {},
-      child: Row(
-        children: [
-          Icon(iconData,
-              color: Theme.of(context).textTheme.caption?.color??Colors.black38,
-              size: iconSize / 2
+  Widget build(BuildContext context) => Container(
+      margin: EdgeInsets.symmetric(horizontal: 6),
+      child: TextButton(
+        onPressed: () {},
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 6),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(iconData,
+                color: Theme.of(context).textTheme.caption?.color),
+              Container(padding: EdgeInsets.only(right: 8),),
+              Text(caption,
+                  style: Theme.of(context).textTheme.caption)
+            ],
           ),
-          Padding(
-              padding: EdgeInsets.only(left: iconSize / 4),
-              child: Text(caption, style: Theme.of(context).textTheme.button)
-          ),
-        ],
-      ),
-    );
+        ),
+      )
+  );
 }

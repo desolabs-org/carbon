@@ -1,4 +1,4 @@
-import 'package:carbon/dao/feed_id.dart';
+import 'package:carbon/dao/models/carbon/feed_id.dart';
 import 'package:carbon/dao/network_kind.dart';
 import 'package:carbon/generated/l10n.dart';
 import 'package:carbon/screens/default.dart';

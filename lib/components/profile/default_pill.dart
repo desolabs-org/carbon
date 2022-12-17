@@ -1,5 +1,5 @@
 import 'package:carbon/dao/network_kind.dart';
-import 'package:carbon/dao/user_id.dart';
+import 'package:carbon/dao/models/carbon/user_id.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 

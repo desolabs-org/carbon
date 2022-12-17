@@ -1,48 +1,57 @@
 import 'package:carbon/components/feed/one_column.dart';
-import 'package:carbon/dao/feed_id.dart';
+import 'package:carbon/components/search/input_box.dart';
+import 'package:carbon/dao/models/carbon/feed_id.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DefaultScreen extends StatelessWidget {
-  FeedId feedId;
+  final FeedId feedId;
 
   DefaultScreen(this.feedId): super();
 
   @override
   Widget build(BuildContext context) {
-
-    Widget feedButton(String assetPath, String feedId) =>
-        TextButton(onPressed: () => GoRouter.of(context).go('/feeds/' + feedId),
-            child: Container(
-                padding: EdgeInsets.symmetric(vertical: 4),
-                child: Image.asset(assetPath, fit: BoxFit.fitHeight)
-            )
-        );
-
-    return Scaffold(
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/bg_tile.png"),
+          repeat: ImageRepeat.repeat
+        )
+      ),
+      child: Scaffold(
         primary: true,
+        backgroundColor: Colors.transparent,
         body: CustomScrollView(
           primary: true,
+          cacheExtent: MediaQuery.of(context).size.longestSide * 2,
           slivers: [
             SliverAppBar(
               primary: true,
               floating: true,
-              pinned: true,
-              backgroundColor: Theme.of(context).backgroundColor,
-              leading: TextButton(
-                  child: Image.asset("assets/images/carbon.png", fit: BoxFit.fitHeight),
-                  onPressed: () => GoRouter.of(context).go('/')
-              ),
-              actions: [
-                // feedButton("assets/images/l4s_short_nobg.png",
-                //            "128b4a0b-4431-4e14-a6b5-3b000e40e0e7"),
-                // feedButton("assets/images/astro_small_nobg_whitebg.png",
-                //            "5049a02d-c77c-4630-8333-20a029f857b9"),
-                // feedButton("assets/images/desologo.png",
-                //            "d85bf9a1-945e-46e9-8d2f-df455c7ab0a9"),
-                // feedButton("assets/images/nft.png",
-                //            "7a544c01-96dd-4e03-a07e-8e1eca09e2ee"),
-              ],
+              pinned: false,
+              centerTitle: true,
+              title: Container(
+                constraints: BoxConstraints(
+                  maxWidth: 600
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        child: Image.asset("assets/images/carbon.png", width: 32),
+                        onPressed: () => GoRouter.of(context).go('/')
+                    ),
+                    SearchInputBox(),
+                    Spacer(),
+                    IconButton(
+                        onPressed: () => GoRouter.of(context).go('/notifications'),
+                        icon: Icon(FontAwesomeIcons.bell)
+                    ),
+                  ],
+                )
+              )
             ),
             OneColumnFeed(
               key: Key(this.feedId.toString()),
@@ -50,6 +59,7 @@ class DefaultScreen extends StatelessWidget {
             )
           ],
         )
+      )
     );
   }
 }

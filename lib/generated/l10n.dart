@@ -159,6 +159,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Comment`
+  String get comment {
+    return Intl.message(
+      'Comment',
+      name: 'comment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recommend`
+  String get recommend {
+    return Intl.message(
+      'Recommend',
+      name: 'recommend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reward`
+  String get reward {
+    return Intl.message(
+      'Reward',
+      name: 'reward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repost`
+  String get repost {
+    return Intl.message(
+      'Repost',
+      name: 'repost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

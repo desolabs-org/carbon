@@ -19,7 +19,7 @@ class DefaultImage extends StatelessWidget {
         maxWidthDiskCache: 600,
         placeholder: (context, url) => Center(child: CircularProgressIndicator()),
         errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
-        fit: BoxFit.fill,
+        fit: BoxFit.fitWidth,
       )
     );
   }

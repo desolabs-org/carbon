@@ -1,11 +1,15 @@
 # Carbon app - a frontend app for the DeSo blockchain 
 
-The frontend for Love4src community.
+The frontend by DeSo Labs community.
 
 This is app can be used as a template for building out social apps on top of the DeSo blockchain.
 
 License for use:
 [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+
+## Deployment
+> 1. Have Peanut installed `flutter pub global activate peanut`
+> 2. Deploy to live `flutter pub global run peanut --branch live --web-renderer html`
 
 ## Tips and tricks
 
